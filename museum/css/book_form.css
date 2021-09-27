@@ -1,0 +1,570 @@
+.booking_form {
+    display: none;
+    position: fixed;
+    z-index: 10; /* Отображение на заднем плане */
+    left: 0;
+    top: 0;
+    width: 100%; /* 100% по ширине */
+    height: 100%; /* 100% по высоте */
+    overflow: auto; /* Включить прокрутку, если необходимо */
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+.left_side {
+    height: 665px;
+}
+.data_info::after {
+    display: block;
+    content: "";
+    top: 10px;
+    left: 0;
+    height: 3px;
+    width: 400px;
+    background-color: #740C11;
+    position: relative;
+    opacity: 0.9;
+    margin-bottom: 70px;
+}
+.left_side h2 {
+    font-family: 'Forum';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 55px;
+    text-transform: uppercase;
+    color: #9D8665;
+    padding-bottom: 11px;
+}
+.data_info {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #710707;
+    margin: 0px;
+}
+.date {
+    padding-bottom: 20px;
+}
+.date input:nth-child(1) {
+    width: 190px;
+    height: 45px;
+    background: #FFFFFF;
+    border: 1px solid #030303;
+    background: url(../assets/svg/date.svg) no-repeat 15px 15px, url(../assets/svg/arrow.svg) no-repeat 160px;
+    margin-right: 18px;
+    box-sizing: border-box;
+}
+.date input:nth-child(2) {
+    width: 190px;
+    height: 45px;
+    background: #FFFFFF;
+    border: 1px solid #030303;
+    background: url(../assets/svg/time.svg) no-repeat 13px 15px, url(../assets/svg/arrow.svg) no-repeat 155px;
+    box-sizing: border-box;
+}
+.date input::placeholder { 
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    display: inline-block;
+    padding-left: 45px;
+    color: #030303;
+}
+.name {
+    background: url(../assets/svg/name.svg) no-repeat 15px 15px;
+    width: 400px;
+    height: 45px;
+    border: 1px solid #030303;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+.name::placeholder {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    display: inline-block;
+    padding-left: 43px;
+    color: #030303;
+}
+.email {
+    background: url(../assets/svg/email.svg) no-repeat 15px 15px;
+    width: 400px;
+    height: 45px;
+    border: 1px solid #030303;
+    display: block;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+.email::placeholder {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    display: inline-block;
+    padding-left: 44px;
+    color: #030303;
+}
+.phone {
+    background: url(../assets/svg/tel.svg) no-repeat 15px 11px;
+    width: 400px;
+    height: 45px;
+    border: 1px solid #030303;
+    display: block;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+.phone::placeholder {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    display: inline-block;
+    padding-left: 44px;
+    color: #030303;
+}
+
+  .__select {
+    position: relative;
+  }
+  .__select[data-state=active] .__select__title::before {
+    transform: translate(-3px, -50%) rotate(-45deg);
+  }
+  .__select[data-state=active] .__select__title::after {
+    transform: translate(3px, -50%) rotate(45deg);
+  }
+  .__select[data-state=active] .__select__content {
+    opacity: 1;
+  }
+  .__select[data-state=active] .__select__label + .__select__input + .__select__label {
+    max-height: 40px;
+    border-top-width: 1px;
+  }
+  
+  .__select__title {
+    display: flex;
+    align-items: center;
+    width: 400px;
+    height: 45px;
+    border: 1px solid #030303;
+    cursor: pointer;
+    box-sizing: border-box;
+    background: url(../assets/svg/ballot.svg) no-repeat 15px 15px, url(../assets/svg/arrow.svg) no-repeat 370px;
+    padding-left: 43px;
+  }
+  
+  .__select__content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 99%;
+    background-color: #ffffff;
+    border: 1px solid #030303;
+    border-top: none;
+    transition: all 0.3s ease-out;
+    opacity: 0;
+    z-index: 8;
+}
+  
+  .__select__input {
+    display: none;
+  }
+  .__select__input:checked + label {
+    background-color: #dedede;
+  }
+  .__select__input:disabled + label {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  
+  .__select__label {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    max-height: 0;
+    padding: 0 43px;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .__select__label:hover {
+    background-color: #E7E7E7 !important;
+    color: #030303;
+  }
+.select_form {
+    margin-bottom: 20px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #030303;
+  }
+.ticket_form {
+    border: 1px solid #030303;
+    box-sizing: border-box;
+    width: 400px;
+    height: 135px;
+    padding: 10px 15px 18px 15px;
+  }
+.ticket_form h3 {
+    font-family: 'Forum';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+    text-transform: capitalize;
+    color: #9D8665;
+  }
+.ticket_form h3::after {
+    display: inline-block;
+    content: "";
+    top: 5px;
+    height: 2px;
+    width: 370px;
+    background-color: #740C11;
+    position: relative;
+    opacity: 0.9;
+    margin-bottom: 18px;
+  }
+.basic_ticket {
+    display: flex;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #030303;
+    margin-bottom: 18px;
+}
+.basic_ticket p {
+    margin: 0px 133px 0px 0px;
+}
+.basic_ticket div {
+    width: 105px;
+    height: 25px;
+    display: flex;
+    border: 1px solid #030303;
+    box-sizing: border-box;
+}
+.basic_ticket button {
+    background-color: #030303;
+    width: 35px;
+    height: 24px;
+    color: white;
+}
+
+.basic_ticket input {
+    width: 35px;
+    text-align: end;
+}
+.senior_ticket {
+    display: flex;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #030303;
+}
+.senior_ticket p {
+    margin: 0px 126px 0px 0px;
+}
+.senior_ticket div {
+    width: 105px;
+    height: 25px;
+    display: flex;
+    border: 1px solid #030303;
+    box-sizing: border-box;
+}
+.senior_ticket button {
+    background-color: #030303;
+    width: 35px;
+    height: 24px;
+    color: white;
+}
+.basic_ticket button:nth-child(1) {
+    
+}
+.senior_ticket input {
+    width: 35px;
+    text-align: end;
+}
+.minus {
+    padding-bottom: 4px;
+}
+.right_side {
+    width: 530px;
+    height: 665px;
+    border: 1px solid #030303;
+    box-sizing: border-box;
+    margin-left: 40px;
+    padding: 25px 30px 26px 30px;
+    font-family: 'Roboto';
+    position: relative;
+}
+.ticket_info {
+    display: flex;
+}
+.ticket_info h3 {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 37px;
+    color: #272727;
+}
+.ticket_info p {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 26px;
+    color: #740C11;
+    opacity: 0.9;
+    margin: 4px 0px 10px 0px;
+}
+.ticket_info_wrapper {
+    margin-right: 124px;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    color: #030303;
+}
+.ticket_info_img {
+    width: 150px;
+    height: 120px;  
+}
+.ticket_info div {
+    padding-bottom: 6px;
+}
+.ticket_info div img {
+    display: inline-block;
+    margin-right: 9px;
+}
+.count_tickets {
+    margin-top: 10px;
+}
+.count_tickets_1 input {
+    background: #030303;
+    width: 32px;
+    height: 20px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 21px;
+    color: #A4A4A3;
+    margin-bottom: 7px;
+}
+.count_tickets_2 input {
+    background: #030303;
+    width: 32px;
+    height: 20px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 21px;
+    color: #A4A4A3;
+}
+.count_tickets_1 span {
+    font-size: 22px;
+    line-height: 26px;
+    color: #030303;
+}
+.span_1 {
+    display: inline-block;
+    margin-right: 267px;
+}
+.count_tickets_2 span {
+    font-size: 22px;
+    line-height: 26px;
+    color: #030303;
+}
+.span_2 {
+    display: inline-block;
+    margin-right: 259px;
+}
+.count_tickets_2::after {
+    display: block;
+    content: "";
+    top: 10px;
+    left: 0;
+    height: 2px;
+    width: 470px;
+    background-color: #740C11;
+    position: relative;
+    opacity: 0.9;
+    margin-bottom: 18px;
+}
+.total span {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 37px;
+    color: #030303; 
+    display: inline-block;
+    margin-right: 321px;
+}
+.total input {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 37px;
+    color: #030303;
+    width: 63px;
+    text-align: end;
+}
+.card {
+    width: 360px;
+    height: 211px;
+    background: #BCBCBC;
+    margin-top: 11px;
+    border-radius: 4px;
+    padding: 15px 19px;
+    box-sizing: border-box;
+    position: relative;
+    font-size: 12px;
+    line-height: 14px;
+    color: #161615;
+}
+.visa {
+    position: absolute;
+    left: 285px;
+    top: 34px;
+}
+.mastercard {
+    position: absolute;
+    left: 287px;
+    top: 65px;
+}
+.card p {
+    margin: 0px;
+}
+.card_number {
+    padding-bottom: 5px;
+}
+.card_number_input {
+    background: #FFFFFF;
+    border: 0.5px solid #A4A4A3;
+    width: 215px;
+    height: 35px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.card_date {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+.card_date_input1 {
+    width: 100px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 0.5px solid #A4A4A3;
+    margin-right: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.card_date_input2 {
+    width: 100px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 0.5px solid #A4A4A3;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.card_name {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+.card_name_input {
+    width: 320px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 0.567px solid #A4A4A3;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.card2 {
+    width: 360px;
+    height: 211px;
+    background: #939393;
+    position: absolute;
+    border-radius: 4px;
+    top: 355px;
+    left: 140px;
+    z-index: -1;
+}
+.black_block {
+    width: 360px;
+    height: 45px;
+    background: #161615;
+    margin-top: 25px;
+}
+.cvc {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    margin-left: 274px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #161615;
+}
+.cvc_input {
+    width: 75px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 0.5px solid #A4A4A3;
+    margin-left: 265px;
+}
+.notice_cvc {
+    font-size: 10px;
+    line-height: 12px;
+    color: #161615;
+    margin-left: 275px;
+    width: 55px;
+    height: 50px;
+    margin-top: 5px;
+}
+.book {
+    width: 220px;
+    height: 45px;
+    background: #710707;
+    opacity: 0.9;
+    display: inline-block;
+    margin-left: 250px;
+    margin-top: 56px;
+    font-size: 22px;
+    line-height: 26px;
+    color: #FFFFFF;
+    padding-top: 5px;
+    transition: 1s;
+    position: relative;
+}
+.book:hover {
+    background: #9D8665;
+    color: black;
+}
+.close_form {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+.wrapper_forms {
+    display: flex;
+    justify-content: center;
+    width: 1450px;
+    padding: 90px 235px;
+    position: relative;
+    background-color: #FFFFFF;
+    position: fixed; /* положение */
+    top: 0%; /* отступ сверху */
+    left: 0px; /* отступ слева */
+    -webkit-transition-duration: 0.3s; /* анимационное выдвижение для всех браузеров*/
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
