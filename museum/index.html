@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Museum</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="assets/favicon.ico">
+  </head>
+<body>
+    <div class="container">
+        <header class="header">
+          <div class="container_header">
+            <div class="header_logo">
+              <img src="./assets/svg/triangle.svg" alt="triangle">
+              <span>LOUVRE</span>
+            </div>
+            <nav class="navigation">
+              <ul class="navigation_list">
+                <li>Visiting</li>
+                <li>Explore</li>
+                <li>Video</li>
+                <li>Gallery</li>
+                <li>Tickets</li>
+                <li>Contacts</li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+        <main>
+            <section class="welcome">
+              <div class="welcome_block">
+                <h1>WELCOME<br> TO THE LOUVRE</h1>
+                <p>From the castle to the museum</p>
+                <button>Discover the Louvre</button>
+              </div>
+            </section>
+            <section class="visiting">
+              <div class="container_content">
+                <h2>VIRTUAL TOUR</h2>
+                <hr>
+                <div class="cards">
+                  <div class="cards_item">
+                    <img src="./assets/img/item_1.jpg">
+                    <h3>ROYAL PALACE</h3>
+                    <hr>
+                    <p>360° Virtual Tour</p>
+                    <p>Google Street Panorama View</p>
+                  </div>
+                  <div class="cards_item">
+                    <img src="./assets/img/item_2.jpg">
+                    <h3>DENON WING</h3>
+                    <hr>
+                    <p>360° Virtual Tour</p>
+                    <p>Google Street Panorama View</p>
+                  </div>
+                  <div class="cards_item">
+                    <img src="./assets/img/item_3.jpg">
+                    <h3>COLONNADE PERRAULT</h3>
+                    <hr>
+                    <p>360° Virtual Tour</p>
+                    <p>Google Street Panorama View</p>
+                  </div>
+                  <div class="cards_item">
+                    <img src="./assets/img/item_4.jpg">
+                    <h3>GREEK HALL</h3>
+                    <hr>
+                    <p>360° Virtual Tour</p>
+                    <p>Google Street Panorama View</p>
+                  </div>
+                  <div class="cards_item">
+                    <img src="./assets/img/item_5.jpg">
+                    <h3>MONA LISA</h3>
+                    <hr>
+                    <p>360° Virtual Tour</p>
+                    <p>Google Street Panorama View</p>
+                  </div>
+                  <div class="cards_item">
+                    <img src="./assets/img/item_6.jpg">
+                    <h3>NIGHT PALACE</h3>
+                    <hr>
+                    <p>360° Virtual Tour</p>
+                    <p>Google Street Panorama View</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="explore">
+              <div class="container_content__explore">
+                <div class="explore_description">
+                  <h2>Picture explore</h2>
+                  <hr>
+                  <p>Las Meninas is a 1656 painting by Diego Velázquez, the leading<br> artist of the Spanish Golden Age.</p>
+                  <p>It was cleaned in 1984 to remove a <span>"yellow veil"</span> of dust that had<br> gathered since the previous restoration in the 19th century.</p>
+                  <p>The cleaning provoked furious protests, not because the picture had<br> been damaged in any way, but because it looked different.</p>
+                </div>
+                <img src="./assets/img/img_explore.jpg">
+              </div>
+            </section>
+            <section class="video">
+              <div class="container_content">
+                <video src="assets/video/video.mp4" poster="./assets/img/video_img.jpg"></video>
+                <div class="rectangle">
+                  <img src="./assets/svg/icon_prev.svg">
+                  <img src="./assets/svg/icon_play.svg">
+                  <img src="./assets/svg/icon_next.svg">
+                  <input type="range" value="47" min="0" max="100" step="1" class="progress">
+                  <img class="icon_sound" src="./assets/svg/icon_sound.svg">
+                  <input type="range" value="40" min="0" max="100" step="1" class="progress_2">
+                  <img src="./assets/svg/icon_to_resize.svg">
+                </div>
+                <div class="video_description">
+                  <h2>Video journey</h2>
+                  <p>Enter and visit one of the most famous museums in the world and enjoy<br> masterpieces such as Mona Lisa or Hammurabi's Code</p>
+                </div>
+              </div>
+            </section>
+            <section class="tickets">
+              <div class="container_content__tickets">
+                  <h2>Buy tickets</h2>
+                  <hr>
+                  <div class="tickets_block">
+                  <img class="tickets_img" src="./assets/img/tickets_img.jpg">
+                  <div class="tickets_form">
+                    <form>
+                      <h3>Ticket Type</h3>
+                      <label class="container_input"><span>Permanent exhibition</span>
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="container_input"><span>Temporary exhibition</span>
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="container_input"><span>Combined Admission</span>
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                      </label>
+                    </form>
+                    <form>
+                      <h3>Amount</h3>
+                      <p>Basic 18+</p>
+                      <div class="amount_tickets">
+                        <button type="button" onclick="this.nextElementSibling.stepDown()"><img src="./assets/svg/–.svg"></button>
+                        <input type="number" min="0" max="100" value="1" readonly class="number">
+                        <button type="button" onclick="this.previousElementSibling.stepUp()"><img src="./assets/svg/+.svg"></button>
+                      </div>
+                      <p>Senior 65+</p>
+                      <div class="amount_tickets">
+                        <button type="button" onclick="this.nextElementSibling.stepDown()"><img src="./assets/svg/–.svg"></button>
+                        <input type="number" min="0" max="100" value="1" readonly class="number">
+                        <button type="button" onclick="this.previousElementSibling.stepUp()"><img src="./assets/svg/+.svg"></button>
+                      </div>
+                      <span class="amount_tickets__total">Total €220</span>
+                      <button class="amount_tickets__buy">Buy Now</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="contacts">
+              <div class="container_content">
+                <h2>Contacts</h2>
+                <hr>
+                <div class="contacts_block">
+                  <div>
+                    <p>Palais Royal</p>
+                    <p>Musee du Louvre</p>
+                    <p>address: 75001 Paris, France</p>
+                    <p>phone: +33(0) 1 40 20 50 50</p>
+                    <p>mail: info@louvre.fr</p>
+                  </div>
+                  <img src="./assets/img/map.png">
+                </div>
+              </div>
+            </section>
+        </main>
+        <footer>
+          <div class="container_content__footer">
+            <div class="footer_logo">
+              <img src="./assets/svg/triangle.svg" alt="triangle">
+              <span>LOUVRE</span>
+            </div>
+            <nav class="navigation_footer">
+              <ul class="navigation_footer__list">
+                <li>Welcome</li>
+                <li>Video</li>
+                <li>Visiting</li>
+                <li>Tickets</li>
+                <li>Explore</li>
+                <li>Contacts</li>
+              </ul>
+            </nav>
+            <ul class="social_links">
+              <li><a href=""><img src="./assets/svg/Youtube.svg"></a></li>
+              <li><a href=""><img src="./assets/svg/Instagram.svg"></a></li>
+              <li><a href=""><img src="./assets/svg/Facebook.svg"></a></li>
+              <li><a href=""><img src="./assets/svg/Twitter.svg"></a></li>
+              <li><a href=""><img src="./assets/svg/Pinterest.svg"></a></li>
+            </ul>
+          </div>
+        </footer>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+</html>
