@@ -9,6 +9,8 @@
     overflow: auto; /* Включить прокрутку, если необходимо */
     background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4); 
+    align-items: center;
+    justify-content: center;
 }
 .left_side {
     height: 665px;
@@ -19,7 +21,7 @@
     top: 10px;
     left: 0;
     height: 3px;
-    width: 400px;
+    width: 100%;
     background-color: #740C11;
     position: relative;
     opacity: 0.9;
@@ -48,16 +50,16 @@
     padding-bottom: 20px;
 }
 .date input:nth-child(1) {
-    width: 190px;
+    width: 46.5%;
     height: 45px;
     background: #FFFFFF;
     border: 1px solid #030303;
     background: url(../assets/svg/date.svg) no-repeat 15px 15px, url(../assets/svg/arrow.svg) no-repeat 160px;
-    margin-right: 18px;
+    margin-right: 22px;
     box-sizing: border-box;
 }
 .date input:nth-child(2) {
-    width: 190px;
+    width: 46.9%;
     height: 45px;
     background: #FFFFFF;
     border: 1px solid #030303;
@@ -76,7 +78,7 @@
 }
 .name {
     background: url(../assets/svg/name.svg) no-repeat 15px 15px;
-    width: 400px;
+    width: 100%;
     height: 45px;
     border: 1px solid #030303;
     margin-bottom: 20px;
@@ -94,7 +96,7 @@
 }
 .email {
     background: url(../assets/svg/email.svg) no-repeat 15px 15px;
-    width: 400px;
+    width: 100%;
     height: 45px;
     border: 1px solid #030303;
     display: block;
@@ -113,7 +115,7 @@
 }
 .phone {
     background: url(../assets/svg/tel.svg) no-repeat 15px 11px;
-    width: 400px;
+    width: 100%;
     height: 45px;
     border: 1px solid #030303;
     display: block;
@@ -151,7 +153,7 @@
   .__select__title {
     display: flex;
     align-items: center;
-    width: 400px;
+    width: 100%;
     height: 45px;
     border: 1px solid #030303;
     cursor: pointer;
@@ -211,7 +213,7 @@
 .ticket_form {
     border: 1px solid #030303;
     box-sizing: border-box;
-    width: 400px;
+    width: 100%;
     height: 135px;
     padding: 10px 15px 18px 15px;
   }
@@ -229,7 +231,7 @@
     content: "";
     top: 5px;
     height: 2px;
-    width: 370px;
+    width: 100%;
     background-color: #740C11;
     position: relative;
     opacity: 0.9;
@@ -263,7 +265,7 @@
 
 .basic_ticket input {
     width: 35px;
-    text-align: end;
+    text-align: center;
 }
 .senior_ticket {
     display: flex;
@@ -289,12 +291,9 @@
     height: 24px;
     color: white;
 }
-.basic_ticket button:nth-child(1) {
-    
-}
 .senior_ticket input {
     width: 35px;
-    text-align: end;
+    text-align: center;
 }
 .minus {
     padding-bottom: 4px;
@@ -311,6 +310,7 @@
 }
 .ticket_info {
     display: flex;
+    justify-content: space-between;
 }
 .ticket_info h3 {
     font-family: Roboto;
@@ -328,7 +328,6 @@
     margin: 4px 0px 10px 0px;
 }
 .ticket_info_wrapper {
-    margin-right: 124px;
     font-weight: 300;
     font-size: 18px;
     line-height: 21px;
@@ -393,7 +392,7 @@
     top: 10px;
     left: 0;
     height: 2px;
-    width: 470px;
+    width: 100%;
     background-color: #740C11;
     position: relative;
     opacity: 0.9;
@@ -554,17 +553,275 @@
     right: 30px;
 }
 .wrapper_forms {
-    display: flex;
-    justify-content: center;
-    width: 1450px;
-    padding: 90px 235px;
     position: relative;
     background-color: #FFFFFF;
     position: fixed; /* положение */
-    top: 0%; /* отступ сверху */
-    left: 0px; /* отступ слева */
     -webkit-transition-duration: 0.3s; /* анимационное выдвижение для всех браузеров*/
     -moz-transition-duration: 0.3s;
     -o-transition-duration: 0.3s;
     transition-duration: 0.3s;
+    width: 1440px;
+}
+.forms {
+    display: flex;
+    justify-content: center;
+    max-width: 1450px;
+    margin: 0 auto;
+    height: 845px;
+    align-items: center;
+}
+
+@media screen and (max-width: 1445px) {
+    .wrapper_forms {
+        width: 1024px;
+    }
+    .forms {
+        height: 768px;
+        padding-top: 30px;
+        box-sizing: border-box;
+    }
+    .close_form {
+        right: 27px;
+    }
+    .data_info::after {
+        margin-bottom: 60px;
+    }
+    .left_side {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .wrapper_forms {
+        width: 590px;
+        overflow: auto;
+        height: 100%;
+    }
+    .forms {
+        flex-direction: column;
+        height: 1479px;
+        padding-top: 0px;
+        justify-content: stretch;
+    }
+    .left_side {
+        width: 100%;
+        padding: 0px 30px;
+        box-sizing: border-box;
+        margin-top: 80px;
+        margin-bottom: 35px;
+    }
+    .left_side h2 {
+        padding-bottom: 20px;
+    }
+    .data_info::after {
+        margin-bottom: 45px;
+    }
+    .date input:nth-child(1) {
+        margin-right: 31px;
+        background: url(../assets/svg/date.svg) no-repeat 15px 15px, url(../assets/svg/arrow.svg) no-repeat 215px;
+    }
+    .date input:nth-child(2) {
+        background: url(../assets/svg/time.svg) no-repeat 13px 15px, url(../assets/svg/arrow.svg) no-repeat 215px;
+    }
+    .__select__title {
+        background: url(../assets/svg/ballot.svg) no-repeat 15px 15px, url(../assets/svg/arrow.svg) no-repeat 495px;
+    }
+    .basic_ticket p {
+        margin: 0px 266px 0px 0px;
+    }
+    .senior_ticket p {
+        margin: 0px 260px 0px 0px;
+    }
+    .right_side {
+        margin-left: 0px;
+        padding: 25px 15px 25px 15px;
+        width: 90%;
+    }
+    .span_1 {
+        margin-right: 297px;
+    }
+    .span_2 {
+        margin-right: 289px;
+    }
+    .total span {
+        margin-right: 351px;
+    }
+    .card2 {
+        left: 150px;
+    }
+    .book {
+        margin-left: 275px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper_forms {
+        width: 420px;
+        
+    }
+    .forms {
+        height: 1754px;
+        justify-content: stretch;
+    }
+    .left_side {
+        margin-top: 80px;
+        height: 690px;
+        margin-bottom: 49px;
+    }
+    .left_side h2 {
+        font-size: 32px;
+        line-height: 35px;
+    }
+    .date input:nth-child(1) {
+        width: 100%;
+        margin-bottom: 20px;
+        background: url(../assets/svg/date.svg) no-repeat 15px 15px, url(../assets/svg/arrow.svg) no-repeat 325px;
+    }
+    .date input:nth-child(2) {
+        width: 100%;
+        background: url(../assets/svg/time.svg) no-repeat 13px 15px, url(../assets/svg/arrow.svg) no-repeat 325px;
+    }
+    .__select__title {
+        background: url(../assets/svg/ballot.svg) no-repeat 15px 15px, url(../assets/svg/arrow.svg) no-repeat 330px;
+    }
+    .basic_ticket p {
+        margin: 0px 96px 0px 0px;
+    }
+    .senior_ticket p {
+        margin: 0px 89px 0px 0px;
+    }
+    .right_side {
+        width: 85%;
+        height: 885px;
+    }
+    .ticket_info_img {
+        width: 120px;
+        height: 96px;
+    }
+    .span_1 {
+        margin-right: 125px;
+    }
+    .span_2 {
+        margin-right: 117px;
+    }
+    .total span {
+        margin-right: 178px;
+    }
+    .card {
+        width: 330px;
+        height: 209px;
+    }
+    .card2 {
+        position: static;
+        width: 330px;
+        height: 209px;
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+    }
+    .visa {
+        left: 260px;
+    }
+    .mastercard {
+        left: 260px;
+    }
+    .card_name_input {
+        width: 290px;
+    }
+    .black_block {
+        width: 330px;
+        display: block;
+        margin-top: 25px;
+    }
+    .cvc_input {
+        margin-left: 235px;
+    }
+    .cvc {
+        margin-left: 244px;
+    }
+    .notice_cvc {
+        margin-left: 249px;
+    }
+    .book {
+        margin-top: 40px;
+        margin-left: 110px;
+        font-size: 20px;
+        line-height: 23px;
+    }
+}
+
+@media screen and (max-width: 419px) {
+    .wrapper_forms {
+        width: 320px;
+        
+    }
+    .basic_ticket p {
+        margin: 0px 10px 0px 0px;
+        font-size: 16px;
+    }
+    .senior_ticket p {
+        margin: 0px 4px 0px 0px;
+        font-size: 16px;
+    }
+    .ticket_info_img {
+        width: 90px;
+        height: 76px;
+    }
+    .count_tickets_1 .span_1 {
+        font-size: 18px;
+        margin-right: 61px;
+    }
+    .count_tickets_2 .span_2 {
+        font-size: 18px;
+        margin-right: 55px;
+    }
+    .total span {
+        margin-right: 93px;
+    }
+    .card {
+        width: 240px;
+        height: 180px;
+    }
+    .card2 {
+        width: 240px;
+        height: 180px;
+    }
+    .visa {
+        display: none;
+    }
+    .mastercard {
+        display: none;
+    }
+    .card_number_input {
+        width: 205px;
+        height: 20px;
+    }
+    .card_date_input2 {
+        width: 94.5px;
+        height: 25px;
+    }
+    .card_date_input1 {
+        width: 94.5px;
+        height: 25px;
+    }
+    .card_name_input {
+        width: 205px;
+        height: 20px;
+    }
+    .black_block {
+        width: 100%;
+    }
+    .cvc {
+        margin-left: 165px;
+    }
+    .cvc_input {
+        margin-left: 150px;
+    }
+    .notice_cvc {
+        margin-left: 165px;
+    }
+    .book {
+        margin-left: 10px;
+    }
 }
