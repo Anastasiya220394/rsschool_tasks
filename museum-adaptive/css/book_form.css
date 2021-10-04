@@ -658,7 +658,7 @@
 @media screen and (max-width: 768px) {
     .wrapper_forms {
         width: 420px;
-        
+        overflow-x: hidden;
     }
     .forms {
         height: 1754px;
