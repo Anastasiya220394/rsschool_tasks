@@ -20,6 +20,17 @@ const quote = document.querySelector('.quote');
 const author = document.querySelector('.author');
 let isPlay = false;
 
+const greetingText = {
+    'en': ['Good night', 'Good morning', 'Good afternoon', 'Good evening'],
+    'ru': ['Доброй ночи', 'Доброе утро', 'Добрый день', 'Добрый вечер']
+  }
+
+const greetingTranslation = {
+    en: greeting.textContent,
+    ru: greeting.textContent
+}
+
+
 function showTime() {
     const date = new Date();
     const currentTime = date.toLocaleTimeString();
@@ -310,13 +321,12 @@ function audioChangeVolume() { //Меняем громкость
     }
 }
 
-
 function audioMute() { //Убираем звук
-    if(audio.volume == 0) {
-        audio.volume = progressVolume.value / 100;
+    if (audio.muted == false) {
+        audio.muted = true;
         volumeBtn.style.backgroundImage = "url('assets/svg/mute.svg')";
     } else {
-        audio.volume = 0;
+        audio.muted = false;
         volumeBtn.style.backgroundImage = "url('assets/svg/volume.svg')";
     }
 }
@@ -349,3 +359,4 @@ prevBtn.addEventListener('click', () => {
     playPrev();    
 });
 progressDuration.addEventListener('change', handleProgressDuration);
+
