@@ -8,7 +8,17 @@
   margin: 0;
   padding: 0;
 }
-
+.lang {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  margin-bottom:30px;
+}
+.lang2 {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+}
 body {
   min-width: 480px;
   min-height: 100vh;

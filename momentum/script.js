@@ -20,6 +20,49 @@ const quote = document.querySelector('.quote');
 const author = document.querySelector('.author');
 let isPlay = false;
 
+const greetingText = {
+    'en': {
+        quotes: 'data.json',
+        placeholder: '[Enter name]',
+        ms: 'm/s',
+        defaultCity: 'Minsk',
+        locale: "en-US",
+        arr: ['Good morning', 'Good afternoon', 'Good evening', 'Good night'],
+        weather: ['Wind speed ', 'Humidity ']
+    },
+    'ru': {
+        quotes: 'data-ru.json',
+        placeholder: '[Введите имя]',
+        ms: 'м/с',
+        defaultCity: 'Минск',
+        locale: "ru",
+        arr: ['Доброе утро', 'Добрый день', 'Добрый вечер', 'Доброй ночи'],
+        weather: ['Скорость ветра ', 'Влажность ']
+    }
+  }
+
+
+function getLang() {
+    let tmp = localStorage.getItem('lang');
+    if (tmp === 'en') {
+        return greetingText.en;
+    }
+    return greetingText.ru;
+}
+function initLang() {
+    if(!localStorage.getItem("lang")) {
+        localStorage.setItem("lang", 'en');
+    }
+}
+initLang();
+
+function update(e) {
+    localStorage.setItem("lang", e.target.textContent);
+    showGreeting();
+    getWeather();
+    getQuotes();
+}
+
 function showTime() {
     const date = new Date();
     const currentTime = date.toLocaleTimeString();
@@ -31,31 +74,31 @@ function showTime() {
 showTime();
 
 function showDate() {
+    let lang = getLang().locale;
     const data = new Date();
     const options = {weekday: 'long', month: 'long', day: 'numeric'};
-    const currentDate = data.toLocaleDateString('en-US', options);
+    const currentDate = data.toLocaleDateString(lang, options);
     date.textContent = currentDate;
     setTimeout(showDate, 1000);
 }
 
-function getHours() {
-    const date = new Date();
-    const hours = date.getHours();
-    return hours;
-}
+
 
 function showGreeting() {
    let globalDay = new Date().getDay();
    let globalHours = new Date().getHours();
+   let lang = getLang();
     if (globalHours >= 6 && globalHours < 12) {
-        greeting.textContent = 'Good morning,';
+        greeting.textContent = lang.arr[0];
    } else if (globalDay > 0 && globalDay < 6 && globalHours >= 12 && globalHours < 18) {
-        greeting.textContent = 'Good afternoon,';
+        greeting.textContent = lang.arr[1];
    } else if(globalDay > 0 && globalDay < 6 && globalHours >= 18 && globalHours < 24) {
-        greeting.textContent = 'Good evening,';
+        greeting.textContent = lang.arr[2];
    } else {
-        greeting.textContent = 'Good night,';
+        greeting.textContent = lang.arr[3];
    }
+   let place = getLang().placeholder;
+   name.setAttribute("placeholder",place );
    return globalHours;
 }
 
@@ -66,6 +109,7 @@ function setLocalStorage() {
     } else if (weatherError.textContent = 'Error! Enter the correct name of the city.') {
         localStorage.setItem('city', '');
     }
+   
   }
 window.addEventListener('beforeunload', setLocalStorage);
 
@@ -78,6 +122,26 @@ function getLocalStorage() {
       }
 }
 window.addEventListener('load', getLocalStorage);
+
+
+
+
+document.querySelector('.lang').addEventListener('click', update)
+document.querySelector('.lang2').addEventListener('click', update)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function getRandomNum() {
     let min = Math.ceil(1);
@@ -134,12 +198,14 @@ slidePrev.addEventListener('click', getSlidePrev)
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    let defaultCity = getLang().defaultCity;
     if(localStorage.length == 0) {
-        city.value = 'Minsk';
+        city.value = defaultCity;
         getWeather();
     }
+    console.log(defaultCity)
     if(localStorage.getItem('city') == '') {
-        city.value = 'Minsk';
+        city.value = defaultCity;
         getWeather();
     } else if(localStorage.getItem('city')) {
         city.value = localStorage.getItem('city');
@@ -150,8 +216,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function getWeather() { 
     weatherError.textContent = '';
-
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=713fb20ff410720fc82e786e1031fb72&units=metric`;
+    let lang = getLang().locale;
+    let ms = getLang().ms;
+    let weatherWind = getLang().weather[0];
+    let weatherHum = getLang().weather[1];
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${lang}&appid=713fb20ff410720fc82e786e1031fb72&units=metric`;
     const res = await fetch(url);
     const data = await res.json(); 
 
@@ -176,15 +245,16 @@ async function getWeather() {
     weatherIcon.classList.add(`owf-${data.weather[0].id}`),
     temperature.textContent = `${Math.round(data.main.temp)}°C`,
     weatherDescription.textContent = data.weather[0].description,
-    wind.textContent = 'Wind speed: ' + `${Math.round(data.wind.speed)} m/s`,
-    humidity.textContent = 'Humidity: ' + `${Math.round(data.main.humidity)}%`,
+    wind.textContent = `${weatherWind}` + `${Math.round(data.wind.speed)} ${ms}`,
+    humidity.textContent = `${weatherHum}` + `${Math.round(data.main.humidity)}%`,
     weatherError.textContent = '';
 }
 city.addEventListener('change', getWeather)
 
 
 async function getQuotes() {  
-    const quotes = 'data.json';
+    let lang = getLang().quotes;
+    const quotes = `${lang}`;
     const res = await fetch(quotes);
     const data = await res.json();
     let dataRandom = data[Math.floor(data.length * Math.random())]
@@ -310,13 +380,12 @@ function audioChangeVolume() { //Меняем громкость
     }
 }
 
-
 function audioMute() { //Убираем звук
-    if(audio.volume == 0) {
-        audio.volume = progressVolume.value / 100;
+    if (audio.muted == false) {
+        audio.muted = true;
         volumeBtn.style.backgroundImage = "url('assets/svg/mute.svg')";
     } else {
-        audio.volume = 0;
+        audio.muted = false;
         volumeBtn.style.backgroundImage = "url('assets/svg/volume.svg')";
     }
 }
@@ -349,3 +418,4 @@ prevBtn.addEventListener('click', () => {
     playPrev();    
 });
 progressDuration.addEventListener('change', handleProgressDuration);
+
