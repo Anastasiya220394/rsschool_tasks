@@ -8,7 +8,13 @@
   margin: 0;
   padding: 0;
 }
-.test {
+.lang {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  margin-bottom:30px;
+}
+.lang2 {
   width: 100px;
   height: 100px;
   background-color: black;
