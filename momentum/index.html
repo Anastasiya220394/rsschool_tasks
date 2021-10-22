@@ -10,7 +10,7 @@
 </head>
 <body>
   <header class="header">
-    <div class="player">
+    <div class="player-cont">
       <div class="player-controls">
         <button class="play-prev player-icon"></button>
         <button class="play player-icon"></button>
@@ -59,58 +59,58 @@
       <h2>Settings</h2>
       <h3 class="show">SHOW</h3>
       <hr>
-      <div class=setting-time>
+      <div class="setting-time">
         <span class="setTime">Time</span>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" id="input-time">
           <span class="slider round"></span>
         </label>
       </div>
       <hr>
-      <div class=setting-time>
+      <div class="setting-time">
         <span class="setDate">Date</span>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" id="input-date">
           <span class="slider round"></span>
         </label>
       </div>
       <hr>
-      <div class=setting-time>
+      <div class="setting-time">
         <span class="setGreet">Greeting</span>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" id="input-greet">
           <span class="slider round"></span>
         </label>
       </div>
       <hr>
-      <div class=setting-time>
+      <div class="setting-time">
         <span class="setQ">Quotes</span>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" id="input-q">
           <span class="slider round"></span>
         </label>
       </div>
       <hr>
-      <div class=setting-time>
+      <div class="setting-time">
         <span class="setWeather">Weather</span>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" id="input-weather">
           <span class="slider round"></span>
         </label>
       </div>
       <hr>
-      <div class=setting-time>
+      <div class="setting-time">
         <span class="setAudio">Audio</span>
         <label class="switch">
           <input type="checkbox">
-          <span class="slider round"></span>
+          <span class="slider round" id="input-audio"></span>
         </label>
       </div>
       <hr>
-      <div class=setting-time>
+      <div class="setting-time">
         <span class="setTodo">Todo List</span>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" id="input-todo">
           <span class="slider round"></span>
         </label>
       </div>
@@ -140,14 +140,15 @@
     <div class="settings">
       <img class="open-settings" src="./assets/svg/setting.svg">
     </div>
-    <div>
+    <div class="container-quote">
       <button class="change-quote"></button>
     <div>
       <div class="quote"></div>
       <div class="author"></div>
     </div>
     </div>
-    <div>TodoList</div>
+    </div>
+    <div class="todo-list">TodoList</div>
   </footer>
   <script type="module" src="script.js"></script>
 </body>
