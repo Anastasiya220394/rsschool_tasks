@@ -175,6 +175,7 @@ function update(e) {
     getQuotes();
     setLocalStorage();
     settingLang();
+    //displayInSettings()
 }
 
 function showTime() {
@@ -370,22 +371,6 @@ getQuotes();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //player
 
 const playBtn = document.querySelector('.play');
@@ -497,17 +482,6 @@ function audioMute() { //Убираем звук
 volumeBtn.addEventListener('click', audioMute);
 progressVolume.addEventListener('change', audioChangeVolume);
 
-
-
-
-
-
-
-
-
-
-
-
 playBtn.addEventListener('click', () => {
     if (!isPlay) {
       playAudio();
@@ -523,15 +497,18 @@ prevBtn.addEventListener('click', () => {
 });
 progressDuration.addEventListener('change', handleProgressDuration);
 
+
+
 //settings
 const openBtn = document.querySelector('.settings');
-openBtn.addEventListener('click', () => {
+function close() {
     document.querySelector('.modal').style.display = document.querySelector('.modal').style.display === "block" ?
      "none" : "block";
-})
+}
+openBtn.addEventListener('click', close)
 
 function settingLang() {
-    let h2 = getLang().settings;
+    let h2 = getLang().settings; 
     let firstH3 = getLang().show;
     document.querySelector('.modal h2').textContent = h2;
     document.querySelector('.show').textContent = firstH3;
@@ -565,6 +542,62 @@ function settingLang() {
 
     let source = getLang().photoSource;
     document.querySelector('.source span').textContent = source;
-
 }
-settingLang()
+settingLang();
+
+
+function displayInSettings() {
+
+    if(document.querySelector('#input-time').checked) {
+        time.style.opacity = '0';
+    } else {
+        time.style.opacity = '1';
+    }
+
+    if(document.querySelector('#input-date').checked) {
+        date.style.opacity = '0';
+    } else {
+        date.style.opacity = '1';
+    }
+
+    if(document.querySelector('#input-greet').checked) {
+        document.querySelector('.greeting-container').style.opacity = '0';
+        document.querySelector('.greeting-container').style.visibility = 'hidden';
+    } else {
+        document.querySelector('.greeting-container').style.opacity = '1';
+        document.querySelector('.greeting-container').style.visibility = 'visible';
+    }
+        
+    if(document.querySelector('#input-q').checked) {
+        document.querySelector('.container-quote').style.opacity = '0';
+    } else {
+        document.querySelector('.container-quote').style.opacity = '1';
+    }
+
+    if(document.querySelector('#input-weather').checked) {
+        document.querySelector('.weather').style.opacity = '0';
+    } else {
+        document.querySelector('.weather').style.opacity = '1';
+    }
+
+    if(document.querySelector('#input-audio').checked) {
+        document.querySelector('.player-cont').style.opacity = '0';
+    } else {
+        document.querySelector('.player-cont').style.opacity = '1';
+    }
+
+    if(document.querySelector('#input-todo').checked) {
+        document.querySelector('.todo-list').style.opacity = '0';
+    } else {
+        document.querySelector('.todo-list').style.opacity = '1';
+    }
+
+} 
+document.querySelector('#input-time').addEventListener('change', displayInSettings);
+document.querySelector('#input-date').addEventListener('change', displayInSettings);
+document.querySelector('#input-greet').addEventListener('change', displayInSettings);
+document.querySelector('#input-q').addEventListener('change', displayInSettings);
+document.querySelector('#input-weather').addEventListener('change', displayInSettings);
+document.querySelector('#input-audio').addEventListener('change', displayInSettings);
+document.querySelector('#input-todo').addEventListener('change', displayInSettings);
+console.log(document.querySelector('.play-list'))

@@ -31,8 +31,10 @@ body {
   min-height: 220px;  
   padding: 20px;
 }
-.player {
+.player-cont {
   display: flex;
+  opacity: 1;
+  transition: 1s;
 }
 .player-controls {
   display: flex;
@@ -180,6 +182,8 @@ body {
   width: 180px;
   min-height: 180px;  
   text-align: left;
+  opacity: 1;
+  transition: 1s;
 }
 
 .weather-error {
@@ -252,12 +256,16 @@ body {
   font-family: 'Arial-MT';
   font-size: 100px;
   letter-spacing: -4px;  
+  opacity: 1;
+  transition: 1s;
 }
 
 .date {
   min-height: 28px;
   font-size: 24px;
   margin-bottom: 20px;
+  opacity: 1;
+  transition: 1s;
 }
 
 .greeting-container {
@@ -268,8 +276,14 @@ body {
   min-height: 48px;
   width: 100vw;
   font-size: 40px;
+  visibility: visible;
+  opacity: 1;
+  transition: 1s;
 }
-
+.container-quote {
+  opacity: 1;
+  transition: 1s;
+}
 .greeting {
   flex: 1;  
   padding: 10px;
@@ -487,7 +501,10 @@ input:checked + .slider:before {
   color: black;
   background-color: white;
 }
-
+.todo-list {
+  opacity: 1;
+  transition: 1s;
+}
 
 
 
