@@ -29,7 +29,19 @@ const greetingText = {
         defaultCity: 'Minsk',
         locale: "en-US",
         arr: ['Good morning, ', 'Good afternoon, ', 'Good evening, ', 'Good night, '],
-        weather: ['Wind speed ', 'Humidity ']
+        weather: ['Wind speed ', 'Humidity '],
+        settings: 'Settings',
+        show: 'SHOW',
+        time: 'Time',
+        date: 'Date',
+        greeting: 'Greeting',
+        settingQuotes: 'Quotes',
+        settingWeather: 'Weather',
+        audio: 'Audio',
+        todo: 'Todo List',
+        general: 'GENERAL',
+        settingLang: 'Language',
+        photoSource: 'Photo source'
     },
     'ru': {
         weatherError: 'Ошибка! Введите правильное название города.',
@@ -39,7 +51,19 @@ const greetingText = {
         defaultCity: 'Минск',
         locale: "ru",
         arr: ['Доброе утро, ', 'Добрый день, ', 'Добрый вечер, ', 'Доброй ночи, '],
-        weather: ['Скорость ветра ', 'Влажность ']
+        weather: ['Скорость ветра ', 'Влажность '],
+        settings: 'Настройки',
+        show: 'ПОКАЗЫВАТЬ',
+        time: 'Время',
+        date: 'Дата',
+        greeting: 'Приветствие',
+        settingQuotes: 'Цитаты',
+        settingWeather: 'Погода',
+        audio: 'Аудио',
+        todo: 'Список дел',
+        general: 'ОБЩИЕ',
+        settingLang: 'Язык',
+        photoSource: 'Источник фото'
     }
 }
 
@@ -150,6 +174,7 @@ function update(e) {
     getWeather();
     getQuotes();
     setLocalStorage();
+    settingLang();
 }
 
 function showTime() {
@@ -498,3 +523,48 @@ prevBtn.addEventListener('click', () => {
 });
 progressDuration.addEventListener('change', handleProgressDuration);
 
+//settings
+const openBtn = document.querySelector('.settings');
+openBtn.addEventListener('click', () => {
+    document.querySelector('.modal').style.display = document.querySelector('.modal').style.display === "block" ?
+     "none" : "block";
+})
+
+function settingLang() {
+    let h2 = getLang().settings;
+    let firstH3 = getLang().show;
+    document.querySelector('.modal h2').textContent = h2;
+    document.querySelector('.show').textContent = firstH3;
+
+    let time = getLang().time;
+    document.querySelector('.setTime').textContent = time;
+
+    let date = getLang().date;
+    document.querySelector('.setDate').textContent = date;
+
+    let greet = getLang().greeting;
+    document.querySelector('.setGreet').textContent = greet;
+
+    let quotes = getLang().settingQuotes;
+    document.querySelector('.setQ').textContent = quotes;
+
+    let weather = getLang().settingWeather;
+    document.querySelector('.setWeather').textContent = weather;
+
+    let setAudio = getLang().audio;
+    document.querySelector('.setAudio').textContent = setAudio;
+
+    let setTodo = getLang().todo;
+    document.querySelector('.setTodo').textContent = setTodo;
+
+    let general = getLang().general;
+    document.querySelector('.general').textContent = general;
+
+    let language = getLang().settingLang;
+    document.querySelector('.setLang').textContent = language;
+
+    let source = getLang().photoSource;
+    document.querySelector('.source span').textContent = source;
+
+}
+settingLang()
