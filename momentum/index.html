@@ -45,8 +45,8 @@
       <button class="slide-prev slider-icon"></button>
       <button class="slide-next slider-icon"></button>
     </div>
-    <div class="lang">en</div>
-    <div class="lang2">ru</div>
+    
+    
     <time class="time"></time>
     <date class="date"></date>
     <div class="greeting-container">
@@ -54,15 +54,100 @@
       <input type="text" class="name"/>
     </div>
   </main>
+ 
+    <div class="modal">
+      <h2>Settings</h2>
+      <h3 class="show">SHOW</h3>
+      <hr>
+      <div class=setting-time>
+        <span class="setTime">Time</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <hr>
+      <div class=setting-time>
+        <span class="setDate">Date</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <hr>
+      <div class=setting-time>
+        <span class="setGreet">Greeting</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <hr>
+      <div class=setting-time>
+        <span class="setQ">Quotes</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <hr>
+      <div class=setting-time>
+        <span class="setWeather">Weather</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <hr>
+      <div class=setting-time>
+        <span class="setAudio">Audio</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <hr>
+      <div class=setting-time>
+        <span class="setTodo">Todo List</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <h3 class="general">GENERAL</h3>
+      <hr>
+      <div class="language">
+        <span class="setLang">Language</span>
+        <div class="lang_btn">
+          <div class="lang">en</div>
+          <div class="lang3">/</div>
+          <div class="lang2">ru</div>
+        </div>
+      </div>
+      <hr>
+      <div class="source">
+        <span>Photo source</span>
+        <div class="source_btn">
+          <div class="github">Github</div>
+          <div class="unsplash">Unsplash</div>
+          <div class="flickr">Flickr</div>
+        </div>
+      </div>
+    </div>
+ 
+  
   <footer class="footer">
     <div class="settings">
-      <button class="open-settings"><img src="./assets/svg/settings.svg"></button>
+      <img class="open-settings" src="./assets/svg/setting.svg">
     </div>
-    <button class="change-quote"></button>
+    <div>
+      <button class="change-quote"></button>
     <div>
       <div class="quote"></div>
       <div class="author"></div>
     </div>
+    </div>
+    <div>TodoList</div>
   </footer>
   <script type="module" src="script.js"></script>
 </body>
