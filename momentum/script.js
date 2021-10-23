@@ -53,7 +53,7 @@ const greetingText = {
         arr: ['Доброе утро, ', 'Добрый день, ', 'Добрый вечер, ', 'Доброй ночи, '],
         weather: ['Скорость ветра ', 'Влажность '],
         settings: 'Настройки',
-        show: 'ПОКАЗЫВАТЬ',
+        show: 'СКРЫТЬ',
         time: 'Время',
         date: 'Дата',
         greeting: 'Приветствие',
@@ -198,14 +198,13 @@ function showDate() {
 }
 
 function showGreeting() {
-   let globalDay = new Date().getDay();
    let globalHours = new Date().getHours();
    let lang = getLang();
     if (globalHours >= 6 && globalHours < 12) {
         greeting.textContent = lang.arr[0];
-   } else if (globalDay > 0 && globalDay < 6 && globalHours >= 12 && globalHours < 18) {
+   } else if (globalHours >= 12 && globalHours < 18) {
         greeting.textContent = lang.arr[1];
-   } else if(globalDay > 0 && globalDay < 6 && globalHours >= 18 && globalHours < 24) {
+   } else if(globalHours >= 18 && globalHours < 24) {
         greeting.textContent = lang.arr[2];
    } else {
         greeting.textContent = lang.arr[3];
@@ -383,6 +382,7 @@ duration = document.querySelector('.duration'),
 songTime = document.querySelector('.song-time');
 const progressVolume = document.querySelector('.progressVolume');
 const volumeBtn = document.querySelector('.volume-icon');
+const smallBtnPlay = document.querySelectorAll('.play-list button');
 
 const audio = new Audio();
 let playNum = 0,
@@ -402,6 +402,7 @@ const playAudio = () => {
     isPlay = true;
     containerPlayList[playNum].classList.add('item-active');
     playBtn.classList.add('pause');
+    smallBtnPlay[playNum].classList.add('pause');
     titleOfSong.textContent = playList[playNum].title;
     audio.addEventListener('ended', playNext);
     int = setInterval(updateProgressDuration, 1000);
@@ -413,6 +414,7 @@ const pauseAudio = () => {
     isPlay = false;
     containerPlayList.forEach(item => item.classList.remove('item-active'));
     playBtn.classList.remove('pause');
+    smallBtnPlay.forEach(item => item.classList.remove('pause'));
     audio.removeEventListener('ended', playNext);
     clearInterval(int);
 }
@@ -434,6 +436,23 @@ function playPrev() {
 const handleProgressDuration = () => {
     audio.currentTime = progressDuration.value;
 }
+
+smallBtnPlay.forEach((item, i) => {
+    item.addEventListener('click', () => {
+        if (playNum != i) {
+        pauseAudio();
+        currentTime = 0;
+        playNum = i;
+        playAudio();
+        } else {
+        if (!isPlay) {
+            playAudio();
+          } else {
+            pauseAudio();
+          }
+        }
+    })
+})
 
 const formatTime = (time) => {
     let minutes = Math.floor((time / 60));
@@ -506,6 +525,17 @@ function close() {
      "none" : "block";
 }
 openBtn.addEventListener('click', close)
+
+/*document.addEventListener('click', (e) => {
+    if(e.target.className == 'open-settings') {
+        document.querySelector('.modal').style.display = document.querySelector('.modal').style.display === "block" ?
+     "none" : "block";
+    } else {
+        if(e.target.className !== 'modal') {
+            document.querySelector('.modal').style.display = "none";
+        }
+    }
+})*/
 
 function settingLang() {
     let h2 = getLang().settings; 
@@ -582,8 +612,15 @@ function displayInSettings() {
 
     if(document.querySelector('#input-audio').checked) {
         document.querySelector('.player-cont').style.opacity = '0';
+        document.querySelector('.play-list').style.opacity = '0';
+        document.querySelector('.player-cont').style.visibility = 'hidden';
+        document.querySelector('.play-list').style.visibility = 'hidden';
+        
     } else {
         document.querySelector('.player-cont').style.opacity = '1';
+        document.querySelector('.play-list').style.opacity = '1'
+        document.querySelector('.player-cont').style.visibility = 'visible';
+        document.querySelector('.play-list').style.visibility = 'visible';
     }
 
     if(document.querySelector('#input-todo').checked) {
@@ -600,4 +637,12 @@ document.querySelector('#input-q').addEventListener('change', displayInSettings)
 document.querySelector('#input-weather').addEventListener('change', displayInSettings);
 document.querySelector('#input-audio').addEventListener('change', displayInSettings);
 document.querySelector('#input-todo').addEventListener('change', displayInSettings);
-console.log(document.querySelector('.play-list'))
+
+
+//todo
+const openTodo = document.querySelector('.todo-list');
+function closeTodo() {
+    document.querySelector('.wrapper-todo').style.display = document.querySelector('.wrapper-todo').style.display === "block" ?
+     "none" : "block";
+}
+openTodo.addEventListener('click', closeTodo)
