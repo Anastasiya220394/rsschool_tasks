@@ -81,7 +81,17 @@ const imagesSrc = {
         local: '.assets/img',
         src: `https://raw.githubusercontent.com/Anastasiya220394/stage1-tasks/assets/images`,
         build_src: function() {
-            let timeOfDay = getTimeOfDay();
+            let timeOfDay = showGreeting();
+                if (timeOfDay >= 6 && timeOfDay < 12) {
+                    timeOfDay = 'morning';
+                } else if (timeOfDay >= 12 && timeOfDay < 18) {
+                    timeOfDay = 'afternoon';
+                } else if(timeOfDay >= 18 && timeOfDay < 24) {
+                    timeOfDay = 'evening';
+                } else {
+                    timeOfDay = 'night';
+                }
+
             setBg(`${this.src}/${timeOfDay}/${randomNum.toString().padStart(2, "0")}.jpg`)
         }
     }, 
@@ -135,6 +145,9 @@ flickrBtn.addEventListener('click', updateUrl);
 function updateUrl(e) {
     localStorage.setItem('url', e.target.className);
     getUrl();
+    const buttonsArr = Array.from(document.querySelector('.source_btn').children);
+    buttonsArr.forEach((el)=>el.classList.remove('active-btn'));
+    e.target.classList.add('active-btn');
 }
 
 function getUrl() {
@@ -175,7 +188,6 @@ function update(e) {
     getQuotes();
     setLocalStorage();
     settingLang();
-    
 }
 
 function showTime() {
@@ -222,6 +234,8 @@ function setLocalStorage() {
     } else if (weatherError.textContent = `${error}`) {
         localStorage.setItem('city', '');
     }
+    let tags = document.querySelector('.tags');
+    localStorage.setItem('tags', tags.value);
 }
 window.addEventListener('beforeunload', setLocalStorage);
 
@@ -231,6 +245,12 @@ function getLocalStorage() {
     }
     if(localStorage.getItem('city')) {
         city.value = localStorage.getItem('city');
+    }
+    let tags = document.querySelector('.tags');
+    if(localStorage.getItem('tags')) {
+        tags.value = localStorage.getItem('tags');
+        getTimeOfDay()
+        getUrl()
       }
 }
 window.addEventListener('load', getLocalStorage);
@@ -241,20 +261,25 @@ document.querySelector('.lang2').addEventListener('click', update);
 
 
 function getTimeOfDay() {
+    let tags = document.querySelector('.tags');
     let timeOfDay = showGreeting();
-    if (timeOfDay >= 6 && timeOfDay < 12) {
+    if (timeOfDay >= 6 && timeOfDay < 12 && tags.value == '') {
         timeOfDay = 'morning';
-    } else if (timeOfDay >= 12 && timeOfDay < 18) {
+    } else if (timeOfDay >= 12 && timeOfDay < 18 && tags.value == '') {
         timeOfDay = 'afternoon';
-   } else if(timeOfDay >= 18 && timeOfDay < 24) {
+   } else if(timeOfDay >= 18 && timeOfDay < 24 && tags.value == '') {
         timeOfDay = 'evening';
    } else {
         timeOfDay = 'night';
+   } 
+   if (tags.value !== '') {
+       timeOfDay = tags.value;
    }
    return timeOfDay;
 }
-
+document.querySelector('.tags-add').addEventListener('click', getUrl)
 function setBg(src) {
+    console.log(src)
     const img = new Image();
     img.src = src; 
     img.onload = () => {      
@@ -606,8 +631,10 @@ function displayInSettings() {
 
     if(document.querySelector('#input-weather').checked) {
         document.querySelector('.weather').style.opacity = '0';
+        document.querySelector('.weather').style.visibility = 'hidden';
     } else {
         document.querySelector('.weather').style.opacity = '1';
+        document.querySelector('.weather').style.visibility = 'visible';
     }
 
     if(document.querySelector('#input-audio').checked) {
@@ -626,9 +653,11 @@ function displayInSettings() {
     if(document.querySelector('#input-todo').checked) {
         document.querySelector('.todo-list').style.opacity = '0';
         document.querySelector('.wrapper-todo').style.opacity = '0';
+        document.querySelector('.wrapper-todo').style.visibility = 'hidden';
     } else {
         document.querySelector('.todo-list').style.opacity = '1';
         document.querySelector('.wrapper-todo').style.opacity = '1';
+        document.querySelector('.wrapper-todo').style.visibility = 'visible';
     }
 
 } 
