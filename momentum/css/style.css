@@ -127,7 +127,7 @@ body {
   content: "\2713";  
   position: absolute;
   left: 0;
-  top: 2px;
+  top: 4px;
   font-weight: 900;
 }
 
@@ -135,7 +135,7 @@ body {
   color: #4dc961ef;
 }
 .player-add {
-  margin-left: 50px;
+  margin-left: 30px;
   margin-top: -7px;
   opacity: 1;
   transition: 1s;
@@ -416,7 +416,7 @@ body {
   position: absolute;
   top: 47%;
   left: 1%;
-  height: 450px;
+  height: 420px;
   background-color: black;
   padding: 25px;
   overflow-y: scroll;
@@ -553,7 +553,7 @@ input:checked + .slider:before {
   padding-top: 30px;
 }
 .source span {
-  padding: 50px 5px;
+  padding: 50px 10px 0px 5px;
   font-size: 20px;
 }
 
@@ -588,6 +588,8 @@ input:checked + .slider:before {
   overflow: hidden;
   overflow-y: scroll;
   display: none;
+  opacity: 1;
+  transition: 1s;
 }
 
 .wrapper-todo::-webkit-scrollbar-button {
@@ -716,8 +718,22 @@ span.active {
   text-align: left;
 }
 
+@media (max-width: 915px) {
+  .source_btn div {
+    width: 70px;
+    height: 30px;
+    font-size: 14px;
+  }
+  .language {
+    flex-direction: column;
+  }
+}
+
 
 @media (max-width: 768px) {
+  body {
+    overflow-y: visible;
+  }
   .time {
     min-height: 80px;
     font-size: 72px;    
@@ -736,4 +752,40 @@ span.active {
     font-size: 32px;
     padding: 5px;
   }
+  .player-add {
+    position: absolute;
+    top: 9%;
+    left: -10px;
+  }
+  .progressVolume {
+    display: none;
+  }
+  .volume-icon {
+    display: none;
+  }
+  .source {
+    flex-direction: column;
+  }
+  .source_btn {
+    margin: 0 auto;
+  }
+  .source span {
+    padding: 0px 10px 20px 5px;
+  }
+  .setting-time {
+    flex-direction: column;
+  }
+  .switch {
+    margin: 15px auto;
+  }
+  .play-list {
+    margin-top: -180px;
+  }
+  .modal {
+    top: 54%;
+  }
+}
+
+@media (max-width: 600px) {
+  
 }

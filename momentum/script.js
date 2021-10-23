@@ -29,7 +29,7 @@ const greetingText = {
         defaultCity: 'Minsk',
         locale: "en-US",
         arr: ['Good morning, ', 'Good afternoon, ', 'Good evening, ', 'Good night, '],
-        weather: ['Wind speed ', 'Humidity '],
+        weather: ['Wind speed: ', 'Humidity: '],
         settings: 'Settings',
         show: 'SHOW',
         time: 'Time',
@@ -51,7 +51,7 @@ const greetingText = {
         defaultCity: 'Минск',
         locale: "ru",
         arr: ['Доброе утро, ', 'Добрый день, ', 'Добрый вечер, ', 'Доброй ночи, '],
-        weather: ['Скорость ветра ', 'Влажность '],
+        weather: ['Скорость ветра: ', 'Влажность: '],
         settings: 'Настройки',
         show: 'СКРЫТЬ',
         time: 'Время',
@@ -175,7 +175,7 @@ function update(e) {
     getQuotes();
     setLocalStorage();
     settingLang();
-    //displayInSettings()
+    
 }
 
 function showTime() {
@@ -300,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
         city.value = localStorage.getItem('city');
         //city.value = defaultCity;
         getWeather();
-    }
+    } 
 });
 
 
@@ -625,8 +625,10 @@ function displayInSettings() {
 
     if(document.querySelector('#input-todo').checked) {
         document.querySelector('.todo-list').style.opacity = '0';
+        document.querySelector('.wrapper-todo').style.opacity = '0';
     } else {
         document.querySelector('.todo-list').style.opacity = '1';
+        document.querySelector('.wrapper-todo').style.opacity = '1';
     }
 
 } 
@@ -639,10 +641,21 @@ document.querySelector('#input-audio').addEventListener('change', displayInSetti
 document.querySelector('#input-todo').addEventListener('change', displayInSettings);
 
 
+let inputs = document.getElementsByName("setting");
+
+inputs.forEach(el => {
+    el.onchange = () => localStorage.setItem(el.id, el.checked);
+    el.checked = localStorage.getItem(el.id) === "true";
+    if(localStorage.getItem(el.id) === "true") {
+        displayInSettings();
+    }
+});
+
+
 //todo
 const openTodo = document.querySelector('.todo-list');
 function closeTodo() {
     document.querySelector('.wrapper-todo').style.display = document.querySelector('.wrapper-todo').style.display === "block" ?
      "none" : "block";
 }
-openTodo.addEventListener('click', closeTodo)
+openTodo.addEventListener('click', closeTodo);
