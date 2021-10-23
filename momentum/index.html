@@ -102,8 +102,8 @@
       <div class="setting-time">
         <span class="setAudio">Audio</span>
         <label class="switch">
-          <input type="checkbox">
-          <span class="slider round" id="input-audio"></span>
+          <input type="checkbox" id="input-audio">
+          <span class="slider round"></span>
         </label>
       </div>
       <hr>
@@ -148,8 +148,44 @@
     </div>
     </div>
     </div>
+
+
     <div class="todo-list">TodoList</div>
+
+
+    <div class="wrapper-todo">
+      
+      <section class="tabs">
+        <ul class="tabs__buttons">
+          <li class="tab tab--all tab--current">
+            <button class="">All</button>
+          </li>
+          <li class="tab tab--active">
+            <button class="">Active</button>
+          </li>
+          <li class="tab tab--done">
+            <button class="">Done</button>
+          </li>
+        </ul>
+      </section>
+  
+      <section class="area__tasks">
+        <form class="add_task">
+          <textarea type="text" class="add_task__textarea"></textarea>
+        </form>
+      </section>
+      <section class="tasks">
+        <div class="tasks__wrapper">
+          <ul class="tasks__list" onclick="crossText(event)">
+            <!--тут добавляются задачи-->
+          </ul>
+    </div>
+    
   </footer>
+
+
+
   <script type="module" src="script.js"></script>
+  <script src="todo.js"></script>
 </body>
 </html>

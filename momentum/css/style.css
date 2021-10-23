@@ -2,7 +2,62 @@
   font-family: 'Arial-MT';
   src: url("../assets/fonts/Arial-MT.woff"); /* Путь к файлу со шрифтом */
  }
-
+ button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+button, 
+button:active, 
+button:focus {
+  outline: none !important;
+  cursor: pointer;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -35,6 +90,7 @@ body {
   display: flex;
   opacity: 1;
   transition: 1s;
+  visibility: visible;
 }
 .player-controls {
   display: flex;
@@ -48,6 +104,9 @@ body {
   text-align: left;
   margin-top: -220px;
   padding: 20px;
+  opacity: 1;
+  transition: 1s;
+  visibility: visible;
 }
 
 .play-item {
@@ -78,6 +137,8 @@ body {
 .player-add {
   margin-left: 50px;
   margin-top: -7px;
+  opacity: 1;
+  transition: 1s;
 }
 .player-icon,
 .slider-icon,
@@ -95,7 +156,12 @@ body {
   cursor: pointer;
   transition: .3s;  
 }
-
+.player-icon.small {
+   width: 15px;
+   height: 15px;
+   background-size: 15px;
+   margin-right: 10px ;
+ }
 .player-icon:hover,
 .slider-icon:hover,
 .change-quote:hover,
@@ -155,12 +221,14 @@ body {
   width: 170px;
   background: linear-gradient(to right, #4dc961ef 0%, #4dc961ef 0%, #ffffffa8 0%, #ffffffa8 100%);
   transition: background 450ms ease-in;
+  cursor: pointer;
 }
 
 .progressVolume {
   width: 60px;
   background: linear-gradient(to right, #4dc961ef 0%, #4dc961ef 50%, #ffffffa8 50%, #ffffffa8 100%);
   transition: background 450ms ease-in;
+  cursor: pointer;
 }
 
 
@@ -172,6 +240,7 @@ body {
   background-color: white;
   border-radius: 50%;
   opacity: 1;
+  cursor: pointer;
 }
 .weather {
   display: flex;
@@ -353,35 +422,35 @@ body {
   overflow-y: scroll;
   display: none;
 }
-::-webkit-scrollbar-button {
+.modal::-webkit-scrollbar-button {
   background-image:url('');
   background-repeat:no-repeat;
   width:5px;
   height:0px
   }
   
-  ::-webkit-scrollbar-track {
+  .modal::-webkit-scrollbar-track {
   background-color:black;
   }
   
-  ::-webkit-scrollbar-thumb {
+  .modal::-webkit-scrollbar-thumb {
   -webkit-border-radius: 0px;
   border-radius: 0px;
   background-color:#ecedee;
   }
   
-  ::-webkit-scrollbar-thumb:hover{
+  .modal::-webkit-scrollbar-thumb:hover{
   background-color:#797d7e;
   }
   
-  ::-webkit-resizer{
+  .modal::-webkit-resizer{
   background-image:url('');
   background-repeat:no-repeat;
   width:4px;
   height:0px
   }
   
-  ::-webkit-scrollbar{
+  .modal::-webkit-scrollbar{
   width: 4px;
   }
 .modal h2 {
@@ -504,11 +573,148 @@ input:checked + .slider:before {
 .todo-list {
   opacity: 1;
   transition: 1s;
+  margin-top: 80px;
+  cursor: pointer;
+}
+
+.wrapper-todo {
+  position: absolute;
+  right: 1%;
+  bottom: 9%;
+  width: 15%;
+  background-color: white;
+  height: 250px;
+  padding: 5px 0px 5px 5px;
+  overflow: hidden;
+  overflow-y: scroll;
+  display: none;
+}
+
+.wrapper-todo::-webkit-scrollbar-button {
+  background-image:url('');
+  background-repeat:no-repeat;
+  width:5px;
+  height:0px
+  }
+  
+  .wrapper-todo::-webkit-scrollbar-track {
+  background-color:#ecedee;
+  }
+  
+  .wrapper-todo::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background-color:rgba(0, 0, 0, 0.308);
+  }
+  
+  .wrapper-todo::-webkit-scrollbar-thumb:hover{
+  background-color:#797d7e;
+  }
+  
+  .wrapper-todo::-webkit-resizer{
+  background-image:url('');
+  background-repeat:no-repeat;
+  width:4px;
+  height:0px
+  }
+  
+  .wrapper-todo::-webkit-scrollbar{
+  width: 4px;
+  }
+.tabs__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab {
+  cursor: pointer;
+  width: 175px;
+  height: 50px;
+  text-align: center;
+  padding-top: 20px;
+  font-weight: 900;
+  margin-left: -3px;
+  color: rgba(5, 53, 101, 0.5);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.tab.tab--current {
+  border-top: 4px solid #545658;
+  color: #53565A;
+}
+
+.area__tasks {
+  margin-top: 18px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.add_task {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.add_task__textarea {
+  margin-bottom: 20px;
+  border: 1px solid #DDDBDA;
+  border-radius: 4px;
+}
+
+textarea:hover,
+textarea:active,
+textarea:focus {
+  border: 1px solid rgba(19, 24, 31, 0.5) !important;
+  outline: none !important;
+}
+
+
+
+.tasks__wrapper {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.tasks__list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 17px;
+  font-size: 16px;
+  color: rgb(83, 86, 90);
 }
 
 
 
 
+.delete_btn {
+  cursor: pointer;
+}
+
+.tasks__list li:hover .btnImportant {
+  display: block;
+}
+.tasks__list li:hover .delete_btn {
+  display: block;
+}
+
+
+
+span.active {
+  text-decoration: line-through;
+}
+
+.text-task {
+  text-decoration: none;
+  cursor: pointer;
+  width: 60%;
+  display: inline;
+  text-align: left;
+}
 
 
 @media (max-width: 768px) {
