@@ -251,6 +251,7 @@ body {
   width: 180px;
   min-height: 180px;  
   text-align: left;
+  visibility: visible;
   opacity: 1;
   transition: 1s;
 }
@@ -348,6 +349,7 @@ body {
   visibility: visible;
   opacity: 1;
   transition: 1s;
+  margin: 0 auto;
 }
 .container-quote {
   opacity: 1;
@@ -570,6 +572,10 @@ input:checked + .slider:before {
   color: black;
   background-color: white;
 }
+.active-btn {
+  background-color: white;
+  color: black;
+}
 .todo-list {
   opacity: 1;
   transition: 1s;
@@ -588,6 +594,7 @@ input:checked + .slider:before {
   overflow: hidden;
   overflow-y: scroll;
   display: none;
+  visibility: visible;
   opacity: 1;
   transition: 1s;
 }
