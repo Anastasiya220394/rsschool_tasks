@@ -41,7 +41,9 @@ const greetingText = {
         todo: 'Todo List',
         general: 'GENERAL',
         settingLang: 'Language',
-        photoSource: 'Photo source'
+        photoSource: 'Photo source',
+        placeholderTags: 'Add tag to search a photo',
+        btnTags: 'Show images'
     },
     'ru': {
         weatherError: 'Ошибка! Введите правильное название города.',
@@ -63,7 +65,9 @@ const greetingText = {
         todo: 'Список дел',
         general: 'ОБЩИЕ',
         settingLang: 'Язык',
-        photoSource: 'Источник фото'
+        photoSource: 'Источник фото',
+        placeholderTags: 'Введите тег для поиска фото',
+        btnTags: 'Показать фото'
     }
 }
 
@@ -587,7 +591,7 @@ function settingLang() {
     document.querySelector('.setAudio').textContent = setAudio;
 
     let setTodo = getLang().todo;
-    document.querySelector('.setTodo').textContent = setTodo;
+    document.querySelector('.todo-list').textContent = setTodo;
 
     let general = getLang().general;
     document.querySelector('.general').textContent = general;
@@ -597,6 +601,13 @@ function settingLang() {
 
     let source = getLang().photoSource;
     document.querySelector('.source span').textContent = source;
+
+    let inputTags = document.querySelector('.tags')
+    let placeholderTags = getLang().placeholderTags;
+    inputTags.setAttribute("placeholder", placeholderTags);
+
+    let btnTags = getLang().btnTags;
+    document.querySelector('.tags-add').textContent = btnTags;
 }
 settingLang();
 
