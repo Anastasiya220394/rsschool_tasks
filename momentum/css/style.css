@@ -48,10 +48,6 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
 button, 
 button:active, 
 button:focus {
@@ -65,7 +61,6 @@ button:focus {
 }
 
 body {
-  min-width: 480px;
   min-height: 100vh;
   font-family: 'Arial', sans-serif;
   font-size: 16px;
@@ -880,3 +875,100 @@ span.active {
   }
 }
 
+@media (max-width: 500px) {
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+  .player-add {
+    display: none;
+  }
+  .play-list {
+    margin-top: -150px;
+  }
+  .play-item {
+    font-size: 12px;
+  }
+  .player-icon {
+    background-size: 22px 22px;
+  }
+  .play {
+    background-size: 32px 32px;
+  }
+  .player-controls {
+    width: 95px;
+  }
+  .city {
+    width: 140px;
+    height: 34px;
+    font-size: 16px;
+  }
+  .weather-icon {
+    font-size: 32px;
+  }
+  .weather {
+    min-height: 155px;
+  }
+  .wind {
+    font-size: 12px;
+  }
+  .humidity {
+    font-size: 12px;
+  }
+  .description-container {
+    font-size: 12px;
+  }
+  .time {
+    font-size: 64px;
+  }
+  .date {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .greeting-container {
+    font-size: 22px;
+  }
+  .name {
+    font-size: 22px;
+    height: 150px;
+    min-height: 0px;
+  }
+  .footer {
+    margin-top: 50px;
+    height: 25vh;
+  }
+  .container-quote {
+    margin-left: 0px;
+    font-size: 12px;
+  }
+  .change-quote {
+    margin-bottom: 15px;
+    background-size: 24px 32px;
+  }
+  .logo {
+    display: none;
+  }
+  .todo-list {
+    visibility: hidden;
+  }
+  .notice-tags {
+    display: none;
+  }
+  .form-tags {
+    display: none;
+  }
+  .modal h2 {
+    font-size: 20px;
+  }
+  .modal h3 {
+    font-size: 18px;
+  }
+  .modal {
+    padding: 10px;
+    height: 330px;
+  }
+  .main {
+    padding: 160px 20px;
+  }
+  
+}
