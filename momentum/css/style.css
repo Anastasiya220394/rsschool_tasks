@@ -876,8 +876,7 @@ span.active {
 }
 
 @media (max-width: 500px) {
-  body {
-    height: 100%;
+  .main {
     overflow: hidden;
   }
   .player-add {
@@ -934,8 +933,9 @@ span.active {
     min-height: 0px;
   }
   .footer {
-    margin-top: 50px;
-    height: 25vh;
+    margin-top: 0px;
+    padding: 0px 20px;
+    height: 30%;
   }
   .container-quote {
     margin-left: 0px;
@@ -966,9 +966,12 @@ span.active {
   .modal {
     padding: 10px;
     height: 330px;
+    top: 25%;
+    width: 35%;
+
   }
-  .main {
-    padding: 160px 20px;
+  .settings {
+    margin-top: 0px;
   }
   
 }
