@@ -31,7 +31,7 @@ const greetingText = {
         arr: ['Good morning, ', 'Good afternoon, ', 'Good evening, ', 'Good night, '],
         weather: ['Wind speed: ', 'Humidity: '],
         settings: 'Settings',
-        show: 'SHOW',
+        show: 'HIDE',
         time: 'Time',
         date: 'Date',
         greeting: 'Greeting',
@@ -43,7 +43,8 @@ const greetingText = {
         settingLang: 'Language',
         photoSource: 'Photo source',
         placeholderTags: 'Add tag to search a photo',
-        btnTags: 'Show images'
+        btnTags: 'Show',
+        notice: '(Only for Unsplash and Flickr)'
     },
     'ru': {
         weatherError: 'Ошибка! Введите правильное название города.',
@@ -67,7 +68,8 @@ const greetingText = {
         settingLang: 'Язык',
         photoSource: 'Источник фото',
         placeholderTags: 'Введите тег для поиска фото',
-        btnTags: 'Показать фото'
+        btnTags: 'Показать',
+        notice: '(Только для Unsplash и Flickr)'
     }
 }
 
@@ -152,6 +154,15 @@ function updateUrl(e) {
     const buttonsArr = Array.from(document.querySelector('.source_btn').children);
     buttonsArr.forEach((el)=>el.classList.remove('active-btn'));
     e.target.classList.add('active-btn');
+    console.log(e.target.className)
+    if(e.target.className === 'github active-btn') {
+        console.log('aaa')
+        document.querySelector('.tags').disabled=true
+        document.querySelector('.tags-add').disabled=true
+    } else {
+        document.querySelector('.tags').disabled=false
+        document.querySelector('.tags-add').disabled=false
+    }
 }
 
 function getUrl() {
@@ -282,6 +293,7 @@ function getTimeOfDay() {
    return timeOfDay;
 }
 document.querySelector('.tags-add').addEventListener('click', getUrl)
+document.querySelector('.tags').addEventListener('change', getUrl)
 function setBg(src) {
     console.log(src)
     const img = new Image();
@@ -548,7 +560,7 @@ progressDuration.addEventListener('change', handleProgressDuration);
 
 
 //settings
-const openBtn = document.querySelector('.settings');
+const openBtn = document.querySelector('.open-settings');
 function close() {
     document.querySelector('.modal').style.display = document.querySelector('.modal').style.display === "block" ?
      "none" : "block";
@@ -592,6 +604,7 @@ function settingLang() {
 
     let setTodo = getLang().todo;
     document.querySelector('.todo-list').textContent = setTodo;
+    document.querySelector('.setTodo').textContent = setTodo;
 
     let general = getLang().general;
     document.querySelector('.general').textContent = general;
@@ -608,6 +621,9 @@ function settingLang() {
 
     let btnTags = getLang().btnTags;
     document.querySelector('.tags-add').textContent = btnTags;
+
+    let notice = getLang().notice;
+    document.querySelector('.notice-tags').textContent = notice;
 }
 settingLang();
 

@@ -26,7 +26,6 @@ function displayTasks() {
           <li>
             <span class="text-task">${taskText}</span>
             <p class="delete_btn" onclick= "deleteTask(this)">x</p>
-              
           </li>
           `;
     todo.innerHTML += displayTask;
@@ -47,6 +46,8 @@ function textAreaEnterClick(e) {
 // удаление элемента по нажатию на мусорку
 function deleteTask(elem) {
   elem.parentNode.remove();
+  console.log(elem.parentNode)
+  console.log(elem)
   updateLocalStorage();
 }
 
