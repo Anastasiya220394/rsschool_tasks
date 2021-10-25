@@ -393,6 +393,10 @@ body {
   filter: invert();
   opacity: 0.6;
 }
+.modal.active-settings {
+  opacity: 1;
+  visibility: visible;
+}
 .open-settings:hover {
   opacity: 1;
 }
@@ -420,7 +424,9 @@ body {
   background-color: black;
   padding: 25px;
   overflow-y: scroll;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
 }
 .modal::-webkit-scrollbar-button {
   background-image:url('');
@@ -614,13 +620,14 @@ input:checked + .slider:before {
   margin-top: 100px;
   cursor: pointer;
   letter-spacing: 1px;
-  width: 8%;
-  height: 12%;
-  padding: 7px;
+  width: 10%;
+  height: 18%;
+  padding-top: 14px;
   background-color: #ffffff52;
   color: #000000c9;
   border-radius: 10px;
   font-weight: 700;
+  font-size: 18px;
 }
 .todo-list:hover {
   background-color: #00000052;
@@ -637,10 +644,10 @@ input:checked + .slider:before {
   padding: 5px 0px 5px 5px;
   overflow: hidden;
   overflow-y: scroll;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
   display: none;
-  visibility: visible;
-  opacity: 1;
-  transition: 1s;
 }
 
 .wrapper-todo::-webkit-scrollbar-button {
@@ -798,6 +805,13 @@ span.active {
   background-color: rgba(0, 0, 0, 0.116);
 }
 
+
+@media (max-width: 1345px) {
+  .todo-list {
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 915px) {
   .source_btn div {
     width: 70px;
@@ -866,6 +880,3 @@ span.active {
   }
 }
 
-@media (max-width: 600px) {
-  
-}
