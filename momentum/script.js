@@ -154,9 +154,7 @@ function updateUrl(e) {
     const buttonsArr = Array.from(document.querySelector('.source_btn').children);
     buttonsArr.forEach((el)=>el.classList.remove('active-btn'));
     e.target.classList.add('active-btn');
-    console.log(e.target.className)
     if(e.target.className === 'github active-btn') {
-        console.log('aaa')
         document.querySelector('.tags').disabled=true
         document.querySelector('.tags-add').disabled=true
     } else {
@@ -295,7 +293,6 @@ function getTimeOfDay() {
 document.querySelector('.tags-add').addEventListener('click', getUrl)
 document.querySelector('.tags').addEventListener('change', getUrl)
 function setBg(src) {
-    console.log(src)
     const img = new Image();
     img.src = src; 
     img.onload = () => {      
@@ -561,22 +558,29 @@ progressDuration.addEventListener('change', handleProgressDuration);
 
 //settings
 const openBtn = document.querySelector('.open-settings');
-function close() {
-    document.querySelector('.modal').style.display = document.querySelector('.modal').style.display === "block" ?
-     "none" : "block";
-}
-openBtn.addEventListener('click', close)
+const modal = document.querySelector('.modal');
 
-/*document.addEventListener('click', (e) => {
-    if(e.target.className == 'open-settings') {
-        document.querySelector('.modal').style.display = document.querySelector('.modal').style.display === "block" ?
-     "none" : "block";
-    } else {
-        if(e.target.className !== 'modal') {
-            document.querySelector('.modal').style.display = "none";
-        }
+const toggleModal = () => {
+    modal.classList.toggle('active-settings');
+}
+  
+openBtn.addEventListener('click', e => {
+    e.stopPropagation();
+  
+    toggleModal();
+});
+  
+document.addEventListener('click', e => {
+    let target = e.target;
+    let its_modal = target == modal || modal.contains(target);
+    let its_openBtn = target == openBtn;
+    let modal_is_active = modal.classList.contains('active-settings');
+    
+    if (!its_modal && !its_openBtn && modal_is_active) {
+        toggleModal();
     }
-})*/
+})
+
 
 function settingLang() {
     let h2 = getLang().settings; 
@@ -711,7 +715,21 @@ inputs.forEach(el => {
 //todo
 const openTodo = document.querySelector('.todo-list');
 function closeTodo() {
-    document.querySelector('.wrapper-todo').style.display = document.querySelector('.wrapper-todo').style.display === "block" ?
+     document.querySelector('.wrapper-todo').style.display = document.querySelector('.wrapper-todo').style.display === "block" ?
      "none" : "block";
 }
 openTodo.addEventListener('click', closeTodo);
+
+
+
+
+console.log(`Score 159/150. 
+
+Сделано все из ТЗ, кроме перевода города по умолчанию: перевод всего остального, сохранение всех настроек, параметров, введенных пользователем. Скрытие блоков. Получение изображение из 3-х мест, поиск по тегам (Unsplash, Flickr). Смена фона из гитхаба последовательна. Доп. функционал - тудушка: добавление, удаление задач, зачеркивание, сортировка, сохранение. Пункты по аудио реализованы полностью. Цитаты рандомные.
+
+Flickr имеет небольшую задержку, с этим ничего не поделать :)
+
+Если будут вопросы касательно работы любого пункта приложения - пишите. Дискорд @Anastasiya(Anastasiya220394)#6850.
+
+Пожалуйста, проверяйте только по пунктам кросс-чека. Адекватных вам проверяющих :)
+`)
