@@ -54,7 +54,7 @@
   </main>
     <div class="modal">
       <h2>Settings</h2>
-      <h3 class="show">SHOW</h3>
+      <h3 class="show">HIDE</h3>
       <hr>
       <div class="setting-time">
         <span class="setTime">Time</span>
@@ -130,12 +130,22 @@
           <div class="flickr">Flickr</div>
         </div>
       </div>
-      <input type="text" class="tags" placeholder="Add tag to search a photo">
-      <button class="tags-add">Show images</button>
+      <p class="notice-tags">(Only for Unsplash and Flickr)</p>
+      <div class="form-tags">
+        <input type="text" class="tags" placeholder="Add tag to search a photo">
+        <button class="tags-add">Show</button>
+      </div>
     </div>
   <footer class="footer">
     <div class="settings">
       <img class="open-settings" src="./assets/svg/setting.svg">
+      <div class="logo">
+        <a href="https://rs.school/js/">
+        <img src="./assets/svg/rs_school_js.svg">
+        </a>
+        <a href="https://github.com/Anastasiya220394">A. Nitievskaya</a>
+        <span>2021</span>
+      </div>
     </div>
     <div class="container-quote">
       <button class="change-quote"></button>
@@ -160,7 +170,6 @@
           </li>
         </ul>
       </section>
-  
       <section class="area__tasks">
         <form class="add_task">
           <textarea type="text" class="add_task__textarea"></textarea>
@@ -171,6 +180,8 @@
           <ul class="tasks__list" onclick="crossText(event)">
             <!--тут добавляются задачи-->
           </ul>
+        </div>
+      </section>
     </div>
   </footer>
   <script type="module" src="script.js"></script>
