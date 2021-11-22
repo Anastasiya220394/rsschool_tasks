@@ -95,7 +95,7 @@ async function getData(e) {
   answersImages[2].src = imageRandomSrc3;
 
   function getNext() {
-    if (currentPos < 2) {
+    if (currentPos < 9) {
       currentPos += 1;
       setTimeout(() => {
         getData(e);
