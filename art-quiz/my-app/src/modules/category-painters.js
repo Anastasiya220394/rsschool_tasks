@@ -217,7 +217,7 @@ async function getData(e) {
         "Отмена";
       document.querySelector(".results-painters__btnNext").textContent = "Да";
     }
-    if (b === 0) {
+    if (b === '') {
       document.querySelector(".modal-results-cup").src =
         "./assets/svg/game-over-cup.svg";
       document.querySelector(".congr").textContent = "Сыграем еще?";
@@ -226,15 +226,18 @@ async function getData(e) {
       document.querySelector(".results-painters__btnHome").textContent =
         "Отмена";
       document.querySelector(".results-painters__btnNext").textContent = "Да";
-    } else {
+    } 
+     if (b > 8) {
       document.querySelector(".modal-results-cup").src =
         "./assets/svg/champion-cup.svg";
+      document.querySelector(".score-results").textContent = " ";
       document.querySelector(".congr").textContent = `${"Поздравляем!" + " "}${b}/` + "10";
       document.querySelector(".results-painters__btnHome").textContent =
         "Домой";
       document.querySelector(".results-painters__btnNext").textContent =
         "Следующая игра";
     }
+    console.log(b)
   }
 
   // модалка в конце

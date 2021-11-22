@@ -170,7 +170,7 @@ async function getData(e) {
         "Отмена";
       document.querySelector(".results-painters__btnNext2").textContent = "Да";
     }
-    if (b === 0) {
+    if (b === '') {
       document.querySelector(".modal-results-cup2").src =
         "./assets/svg/game-over-cup.svg";
       document.querySelector(".congr2").textContent = "Сыграем еще?";
@@ -179,9 +179,11 @@ async function getData(e) {
       document.querySelector(".results-painters__btnHome2").textContent =
         "Отмена";
       document.querySelector(".results-painters__btnNext2").textContent = "Да";
-    } else {
+    } 
+    if (b > 8) {
       document.querySelector(".modal-results-cup2").src =
         "./assets/svg/champion-cup.svg";
+        document.querySelector(".score-results2").textContent = " ";
       document.querySelector(".congr2").textContent = "Поздравляем!";
       document.querySelector(".results-painters__btnHome2").textContent =
         "Домой";
