@@ -1,5 +1,6 @@
-import './modules/main-page.js';
-import './modules/settings-page.js';
-import './modules/category-painters.js';
-import './modules/category-images.js';
-import './modules/pictures-result.js';
+import "./modules/main-page";
+import "./modules/settings-page";
+import "./modules/category-painters";
+import "./modules/category-images";
+import "./modules/pictures-result";
+import "./modules/pictures-result2";

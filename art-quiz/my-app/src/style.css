@@ -658,17 +658,17 @@ input:checked + .slider:before {
 .author-modal, .year-modal {
   font-style: italic;
 }
-.results-page {
+.results-page, .results-page2 {
   display: none;
   background-color: black;
   padding: 20px 40px;
   font-family: 'Gilroy';
   color: white;
 }
-.back-btn-pageResults {
+.back-btn-pageResults, .back-btn-pageResults2 {
   cursor: pointer;
 }
-.results-page h2 {
+.results-page h2, .results-page2 h2 {
   padding-bottom: 50px;
   font-size: 24px;
   padding-top: 20px;
@@ -679,19 +679,35 @@ input:checked + .slider:before {
   padding-bottom: 20px;
   font-size: 24px;
 }
-.score-pageResults {
+.score-pageResults, .score-pageResults2 {
   font-size: 20px;
 }
-.all-images {
+.all-images, .all-images2 {
   padding-top: 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  margin-bottom: 30%;
 }
 .image-result {
   width: 15%;
   border-radius: 50px;
   cursor: pointer;
+}
+.image-result:nth-child(3) {
+  filter: grayscale(100%);
+}
+.image-result:nth-child(6) {
+  filter: grayscale(100%);
+}
+.image-result:nth-child(4) {
+  filter: grayscale(100%);
+}
+.image-result:nth-child(9) {
+  filter: grayscale(100%);
+}
+.image-result:nth-child(10) {
+  filter: grayscale(100%);
 }
 
 

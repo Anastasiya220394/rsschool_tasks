@@ -1,89 +1,88 @@
-import { imagesPage, mainPage, settingsPage } from './main-page.js';
-import { trueAnswer, falseAnswer, gameOver } from './settings-page.js';
-import checkboxTime from './category-painters.js';
+import { imagesPage, mainPage, settingsPage } from "./main-page";
+import { trueAnswer, falseAnswer, gameOver } from "./settings-page";
+import checkboxTime from "./category-painters";
+import "./pictures-result2";
 
-const btnHome = document.querySelector('.btn-home-images');
+const btnHome = document.querySelector(".btn-home-images");
+const categories = document.querySelectorAll("[class^='category-images-']");
 
-btnHome.addEventListener('click', () => {
-  imagesPage.style.display = 'none';
-  mainPage.style.display = 'block';
+btnHome.addEventListener("click", () => {
+  imagesPage.style.display = "none";
+  mainPage.style.display = "block";
 });
 
 let score = [];
 let currentPos = 0;
 
 async function getData(e) {
-  const res = await fetch('./data/images.json');
+  const res = await fetch("./data/images.json");
   const data = await res.json();
   let cutArr = [];
   cutArr = data.slice(120, 240);
 
   let arrToShow = [];
 
-  if (e.className === 'category-images-realism') {
+  if (e.className === "category-images-realism") {
     arrToShow = cutArr.slice(0, 10);
   }
-  if (e.className === 'category-images-impressionism') {
+  if (e.className === "category-images-impressionism") {
     arrToShow = cutArr.slice(10, 20);
   }
-  if (e.className === 'category-images-portrait') {
+  if (e.className === "category-images-portrait") {
     arrToShow = cutArr.slice(20, 30);
   }
-  if (e.className === 'category-images-painting') {
+  if (e.className === "category-images-painting") {
     arrToShow = cutArr.slice(30, 40);
   }
-  if (e.className === 'category-images-landscape') {
+  if (e.className === "category-images-landscape") {
     arrToShow = cutArr.slice(40, 50);
   }
-  if (e.className === 'category-images-avant-garde') {
+  if (e.className === "category-images-avant-garde") {
     arrToShow = cutArr.slice(50, 60);
   }
-  if (e.className === 'category-images-surrealism') {
+  if (e.className === "category-images-surrealism") {
     arrToShow = cutArr.slice(60, 70);
   }
-  if (e.className === 'category-images-romanticism') {
+  if (e.className === "category-images-romanticism") {
     arrToShow = cutArr.slice(70, 80);
   }
-  if (e.className === 'category-images-expressionism') {
+  if (e.className === "category-images-expressionism") {
     arrToShow = cutArr.slice(80, 90);
   }
-  if (e.className === 'category-images-religion') {
+  if (e.className === "category-images-religion") {
     arrToShow = cutArr.slice(90, 100);
   }
-  if (e.className === 'category-images-marine') {
+  if (e.className === "category-images-marine") {
     arrToShow = cutArr.slice(100, 110);
   }
-  if (e.className === 'category-images-renaissance') {
+  if (e.className === "category-images-renaissance") {
     arrToShow = cutArr.slice(110, 120);
   }
 
   const key = e.className;
 
-  imagesPage.style.display = 'none';
-  document.querySelector('.quiz2-block').style.display = 'block';
+  imagesPage.style.display = "none";
+  document.querySelector(".quiz2-block").style.display = "block";
 
   const authorReal = arrToShow[currentPos].author;
   const imageReal = arrToShow[currentPos].imageNum;
   const imageRealSrc = `./assets/images/mobile/${imageReal}.jpg`;
-  const imageRandom = cutArr[Math.floor(Math.random() * cutArr.length)].imageNum;
+  const imageRandom = data[Math.floor(Math.random() * data.length)].imageNum;
   const imageRandomSrc = `./assets/images/mobile/${imageRandom}.jpg`;
-  const imageRandom2 = cutArr[Math.floor(Math.random() * cutArr.length)].imageNum;
+  const imageRandom2 = data[Math.floor(Math.random() * data.length)].imageNum;
   const imageRandomSrc2 = `./assets/images/mobile/${imageRandom2}.jpg`;
-  const imageRandom3 = cutArr[Math.floor(Math.random() * cutArr.length)].imageNum;
+  const imageRandom3 = data[Math.floor(Math.random() * data.length)].imageNum;
   const imageRandomSrc3 = `./assets/images/mobile/${imageRandom3}.jpg`;
-
-  const arrImages = [imageReal, imageRandom, imageRandom2, imageRandom3];
-  arrImages.forEach((image) => {
-    if (image === image) {
-      image = cutArr[Math.floor(Math.random() * cutArr.length)].image;
-    }
-  });
 
   displayTasks();
 
-  document.querySelector('.author-question').textContent = `${'Какую картину написал' + ' '}${authorReal}?`;
+  document.querySelector(".author-question").textContent = `${
+    "Какую картину написал" + " "
+  }${authorReal}?`;
 
-  const answersImages = Array.from(document.querySelector('.images-block').children);
+  const answersImages = Array.from(
+    document.querySelector(".images-block").children
+  );
   const item = answersImages[Math.floor(Math.random() * answersImages.length)];
   item.src = imageRealSrc;
   const index = answersImages.indexOf(item);
@@ -103,9 +102,9 @@ async function getData(e) {
       }, 1000);
     } else {
       currentPos = 0;
-      document.querySelector('.results-images').classList.toggle('show');
-      document.querySelector('.overlay2').style.display = 'block';
-      document.querySelector('.modal-question2').classList.toggle('show');
+      document.querySelector(".results-images").classList.toggle("show");
+      document.querySelector(".overlay2").style.display = "block";
+      document.querySelector(".modal-question2").classList.toggle("show");
       localStorage.setItem(key, score);
       score = [];
       updateScore(key);
@@ -113,121 +112,159 @@ async function getData(e) {
       modal();
     }
   }
-  const answer = document.querySelector('.images-block');
-  answer.addEventListener('click', (event) => {
-    document.querySelector('.modal-question2').classList.toggle('show');
+  const answer = document.querySelector(".images-block");
+  answer.addEventListener("click", (event) => {
+    document.querySelector(".modal-question2").classList.toggle("show");
     if (String(event.target.src).includes(imageReal)) {
       score.push(arrToShow[currentPos].imageNum);
-      event.target.style.border = '5px solid green';
+      event.target.style.border = "5px solid green";
       trueAnswer.play();
-      document.querySelector('.trueAnswer2').src = './assets/svg/true.svg';
+      document.querySelector(".trueAnswer2").src = "./assets/svg/true.svg";
     } else {
-      event.target.style.border = '5px solid red';
+      event.target.style.border = "5px solid red";
       falseAnswer.play();
-      document.querySelector('.trueAnswer2').src = './assets/svg/false.svg';
+      document.querySelector(".trueAnswer2").src = "./assets/svg/false.svg";
     }
   });
 
-  document.querySelector('.question-image3').src = imageRealSrc;
-  document.querySelector('.author-modal2').textContent = authorReal;
-  document.querySelector('.picture-modal2').textContent = arrToShow[currentPos].name;
-  document.querySelector('.year-modal2').textContent = arrToShow[currentPos].year;
+  document.querySelector(".question-image3").src = imageRealSrc;
+  document.querySelector(".author-modal2").textContent = authorReal;
+  document.querySelector(".picture-modal2").textContent =
+    arrToShow[currentPos].name;
+  document.querySelector(".year-modal2").textContent =
+    arrToShow[currentPos].year;
 
-  const btnContinue = document.querySelector('.continue-question2');
-  btnContinue.addEventListener('click', getNext);
+  const btnContinue = document.querySelector(".continue-question2");
+  btnContinue.addEventListener("click", getNext);
 
-  /* document.querySelector('.back-btn').addEventListener('click', () => {
-        document.querySelector('.quiz2-block').style.display = 'none';
-        imagesPage.style.display = 'block';
-    }); */
-
-  document.querySelector('.back-btn2').addEventListener('click', () => {
-    document.querySelector('.overlay2').style.display = 'block';
-    document.querySelector('.modal-to-close2').classList.toggle('show');
+  document.querySelector(".back-btn2").addEventListener("click", () => {
+    document.querySelector(".overlay2").style.display = "block";
+    document.querySelector(".modal-to-close2").classList.toggle("show");
   });
-  document.querySelector('.modal-to-close__btn2').addEventListener('click', () => {
-    document.querySelector('.overlay2').style.display = 'none';
-    document.querySelector('.modal-to-close2').classList.toggle('show');
+  document
+    .querySelector(".modal-to-close__btn2")
+    .addEventListener("click", () => {
+      document.querySelector(".overlay2").style.display = "none";
+      document.querySelector(".modal-to-close2").classList.toggle("show");
+    });
+  document.querySelector(".cancel2").addEventListener("click", () => {
+    document.querySelector(".overlay2").style.display = "none";
+    document.querySelector(".modal-to-close2").classList.toggle("show");
   });
-  document.querySelector('.cancel2').addEventListener('click', () => {
-    document.querySelector('.overlay2').style.display = 'none';
-    document.querySelector('.modal-to-close2').classList.toggle('show');
-  });
-  document.querySelector('.yes2').addEventListener('click', () => {
-    document.querySelector('.quiz2-block').style.display = 'none';
-    imagesPage.style.display = 'block';
+  document.querySelector(".yes2").addEventListener("click", () => {
+    document.querySelector(".quiz2-block").style.display = "none";
+    imagesPage.style.display = "block";
   });
 
   function modal() {
     let b = localStorage.getItem(key);
-    if (b) b = b.split(',').length;
+    if (b) b = b.split(",").length;
 
     if (b <= 7) {
-      document.querySelector('.modal-results-cup2').src = './assets/svg/game-over-cup.svg';
-      document.querySelector('.congr2').textContent = 'Сыграем еще?';
-      document.querySelector('.score-results2').textContent = `${'Game over' + ' '}${b}/` + '10';
-      document.querySelector('.results-painters__btnHome2').textContent = 'Отмена';
-      document.querySelector('.results-painters__btnNext2').textContent = 'Да';
+      document.querySelector(".modal-results-cup2").src =
+        "./assets/svg/game-over-cup.svg";
+      document.querySelector(".congr2").textContent = "Сыграем еще?";
+      document.querySelector(".score-results2").textContent =
+        `${"Game over" + " "}${b}/` + "10";
+      document.querySelector(".results-painters__btnHome2").textContent =
+        "Отмена";
+      document.querySelector(".results-painters__btnNext2").textContent = "Да";
     }
     if (b === 0) {
-      document.querySelector('.modal-results-cup2').src = './assets/svg/game-over-cup.svg';
-      document.querySelector('.congr2').textContent = 'Сыграем еще?';
-      document.querySelector('.score-results2').textContent = 'Game over' + ' ' + '0' + '/' + '10';
-      document.querySelector('.results-painters__btnHome2').textContent = 'Отмена';
-      document.querySelector('.results-painters__btnNext2').textContent = 'Да';
+      document.querySelector(".modal-results-cup2").src =
+        "./assets/svg/game-over-cup.svg";
+      document.querySelector(".congr2").textContent = "Сыграем еще?";
+      document.querySelector(".score-results2").textContent =
+        "Game over" + " " + "0" + "/" + "10";
+      document.querySelector(".results-painters__btnHome2").textContent =
+        "Отмена";
+      document.querySelector(".results-painters__btnNext2").textContent = "Да";
     } else {
-      document.querySelector('.modal-results-cup2').src = './assets/svg/champion-cup.svg';
-      document.querySelector('.congr2').textContent = 'Поздравляем!';
-      document.querySelector('.results-painters__btnHome2').textContent = 'Домой';
-      document.querySelector('.results-painters__btnNext2').textContent = 'Следующая игра';
+      document.querySelector(".modal-results-cup2").src =
+        "./assets/svg/champion-cup.svg";
+      document.querySelector(".congr2").textContent = "Поздравляем!";
+      document.querySelector(".results-painters__btnHome2").textContent =
+        "Домой";
+      document.querySelector(".results-painters__btnNext2").textContent =
+        "Следующая игра";
     }
   }
   // модалка в конце
 
-  document.querySelector('.modal-results-close__btn2').addEventListener('click', () => {
-    document.querySelector('.results-images').classList.toggle('show');
-    document.querySelector('.overlay2').style.display = 'none';
-  });
+  document
+    .querySelector(".modal-results-close__btn2")
+    .addEventListener("click", () => {
+      document.querySelector(".results-images").classList.toggle("show");
+      document.querySelector(".overlay2").style.display = "none";
+    });
 
-  document.querySelector('.results-painters__btnHome2').addEventListener('click', () => {
-    document.querySelector('.results-images').classList.toggle('show');
-    document.querySelector('.quiz2-block').style.display = 'none';
-    mainPage.style.display = 'block';
-  });
-  document.querySelector('.results-painters__btnNext2').addEventListener('click', () => {
-    document.querySelector('.results-images').classList.toggle('show');
-    document.querySelector('.question-block2').style.display = 'none';
-    imagesPage.style.display = 'block';
-  });
+  document
+    .querySelector(".results-painters__btnHome2")
+    .addEventListener("click", () => {
+      document.querySelector(".results-images").classList.toggle("show");
+      document.querySelector(".quiz2-block").style.display = "none";
+      mainPage.style.display = "block";
+    });
+  document
+    .querySelector(".results-painters__btnNext2")
+    .addEventListener("click", () => {
+      document.querySelector(".results-images").classList.toggle("show");
+      document.querySelector(".question-block2").style.display = "none";
+      imagesPage.style.display = "block";
+    });
 
   if (checkboxTime.checked) {
-    document.querySelector('.timer-picture2').style.display = 'block';
-    document.querySelector('.progress-time2 span').style.display = 'block';
+    document.querySelector(".timer-picture2").style.display = "block";
+    document.querySelector(".progress-time2 span").style.display = "block";
     timer();
   }
 
   function timer() {
-    let count = document.querySelector('#count_time').value;
+    let count = document.querySelector("#count_time").value;
     const interval = setInterval(() => {
-      document.querySelector('.progress-time2 span').innerHTML = `${'00' + ' ' + ':' + ' '}${count}`;
+      document.querySelector(".progress-time2 span").innerHTML = `${
+        "00" + " " + ":" + " "
+      }${count}`;
       count--;
       if (count === 0) {
         clearInterval(interval);
         falseAnswer.play();
         getNext();
       }
-      if (document.querySelector('.quiz2-block').style.display === 'none') {
+      if (document.querySelector(".quiz2-block").style.display === "none") {
         clearInterval(interval);
       }
-      if (document.querySelector('.modal-question2').classList.contains('show')) {
+      if (
+        document.querySelector(".modal-question2").classList.contains("show")
+      ) {
         clearInterval(interval);
       }
     }, 1000);
   }
 }
 
+categories.forEach((cat) => {
+  const scoreBtn = cat.getElementsByTagName("button")[0];
+  scoreBtn.addEventListener("click", (e) => {
+    document.querySelector(".results-page2").style.display = "block";
+    imagesPage.style.display = "none";
+    const key = e.target.parentNode.className;
+    let b = localStorage.getItem(key);
+    if (b) b = b.split(",").length;
+    document.querySelector(".score-pageResults2").textContent = `${b}/` + "10";
+    e.stopPropagation();
+  });
+});
+
+document
+  .querySelector(".back-btn-pageResults2")
+  .addEventListener("click", () => {
+    document.querySelector(".results-page2").style.display = "none";
+    imagesPage.style.display = "block";
+  });
+
 function displayTasks() {
-  let displayTask = '';
+  let displayTask = "";
   displayTask += `
       <div class="question-block2">
       <div class="overlay2"></div>
@@ -276,23 +313,23 @@ function displayTasks() {
         </div>
       </div>
       `;
-  document.querySelector('.quiz2-block').innerHTML = displayTask;
+  document.querySelector(".quiz2-block").innerHTML = displayTask;
 }
 
-document.querySelector('.btn-settings-categories2').addEventListener('click', () => {
-  imagesPage.style.display = 'none';
-  settingsPage.style.display = 'block';
+document
+  .querySelector(".btn-settings-categories2")
+  .addEventListener("click", () => {
+    imagesPage.style.display = "none";
+    settingsPage.style.display = "block";
+  });
+document.querySelector(".logo-cat2").addEventListener("click", () => {
+  imagesPage.style.display = "none";
+  mainPage.style.display = "block";
 });
-document.querySelector('.logo-cat2').addEventListener('click', () => {
-  imagesPage.style.display = 'none';
-  mainPage.style.display = 'block';
-});
-
-const categories = document.querySelectorAll("[class^='category-images-']");
 
 categories.forEach((cat) => {
-  const img = cat.querySelector('img');
-  img.addEventListener('click', (e) => {
+  const img = cat.querySelector("img");
+  img.addEventListener("click", (e) => {
     getData(e.target.parentNode);
   });
 });
@@ -300,18 +337,18 @@ categories.forEach((cat) => {
 function updateScore() {
   categories.forEach((cat) => {
     const catScore = localStorage.getItem(cat.className);
-    const divScore = cat.querySelector('.score');
-    const divScoreBtn = cat.querySelector('.page-score');
-    const img = cat.querySelector('.categories-img');
+    const divScore = cat.querySelector(".score");
+    const divScoreBtn = cat.querySelector(".page-score");
+    const img = cat.querySelector(".categories-img");
     if (catScore) {
-      divScore.textContent = `${catScore.split(',').length}/${10}`;
-      divScoreBtn.style.display = 'block';
-      img.classList.add('gray');
+      divScore.textContent = `${catScore.split(",").length}/${10}`;
+      divScoreBtn.style.display = "block";
+      img.classList.add("gray");
     }
-    if (catScore === '') {
+    if (catScore === "") {
       divScore.textContent = `${0}/${10}`;
-      divScoreBtn.style.display = 'block';
-      img.classList.add('gray');
+      divScoreBtn.style.display = "block";
+      img.classList.add("gray");
     }
   });
 }

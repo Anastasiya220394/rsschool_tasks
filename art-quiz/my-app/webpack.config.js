@@ -72,6 +72,7 @@ module.exports = ({ development }) => {
       filename: 'js/[name].[contenthash].js',
       path: path.resolve(__dirname, 'dist'),
       assetModuleFilename: '[file]',
+      clean: true,
     },
     target: ['web', 'es6'],
     module: {

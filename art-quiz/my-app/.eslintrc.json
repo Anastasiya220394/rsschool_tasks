@@ -10,8 +10,5 @@
         "sourceType": "module"
     },
     "rules": {
-    },
-    "resolve": {
-        "extensions": [".js"]
     }
 }
