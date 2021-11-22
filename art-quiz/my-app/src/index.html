@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="assets/favicon.ico" rel="shortcut icon" />
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Art Quiz</title>
+</head>
+<body>
+    <div class="container">
+        <section class="main-page">
+            <img class="btn-settings" src="assets/svg/settings.svg">
+            <img class="logo" src="assets/svg/logo.svg">
+            <ul class="main-btns">
+                <li><button class="btn-painters">Художники</button></li>
+                <li><button class="btn-images">Картины</button></li>
+            </ul>
+            <div class="footer">
+                <ul class="footer-list">
+                    <li><a href="https://rs.school/js/"><img src="assets/svg/rs-school-logo.svg"></a></li>
+                    <li><a href="https://github.com/Anastasiya220394">Anastasiya Nitievskaya</a></li>
+                    <li>2021</li>
+                </ul>
+            </div>
+        </section>
+        <section class="settings">
+            <img class="back-settings" src="assets/svg/back.svg">
+            <h2 class="settings-h2">Настройки</h2>
+            <div class="volume">
+                <p>Звук игры</p>
+                <input type="range" class="input-volume">
+                <div class="volume-bnts">
+                    <img class="volume-mute-img" src="assets/svg/volume-mute.svg">
+                    <img class="volume-img" src="assets/svg/volume.svg">
+                </div>
+            </div>
+            <div class="game-on-time">
+                <h3>Игра на время</h3>
+                <div class="switch-game">
+                    <span class="span-switch">Вкл</span>
+                    <label class="switch">
+                        <input type="checkbox" id="input-time" name="setting">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="time-of-question">
+                <p>Время для ответа</p>
+                <div class="amount_time">
+                    <img src="assets/svg/btn-minus.svg" class="btn-minus">
+                    <input type="number" min="0" max="30" value="5" readonly class="number" id="count_time" step="5">
+                    <img src="assets/svg/btn-plus.svg" class="btn-plus">
+                  </div>
+            </div>
+            <div class="settings-btns">
+                <button class="default-btn">Сбросить</button>
+                <button class="save-btn">Сохранить</button>
+            </div>
+            <div class="footer">
+                <ul class="footer-list">
+                    <li><a href="https://rs.school/js/"><img src="assets/svg/rs-school-logo.svg"></a></li>
+                    <li><a href="https://github.com/Anastasiya220394">Anastasiya Nitievskaya</a></li>
+                    <li>2021</li>
+                </ul>
+            </div>
+        </section>
+        <section class="category-painters">
+            <div class="images-painters-svg">
+                <img src="assets/svg/logo-categories.svg" class="logo-cat">
+                <p class="btn-home-painters">Домой</p>
+                <img class="btn-settings-categories" src="assets/svg/settings.svg">
+            </div>
+            <h2>Категории</h2>
+            <div class="list-categories">
+               <div class="category-painters-realism">
+                    <p class="text-category">
+                        <span>Реализм</span>
+                        <span class="score"></span>
+                    </p>
+                   <button class="page-score">Score</button>
+                   <img src="assets/images/mobile/0.jpg" class="categories-img">
+               </div>
+               <div class="category-painters-impressionism">
+                    <p class="text-category">
+                        <span>Импрессионизм</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                    <img src="assets/images/mobile/1.jpg" class="categories-img">
+               </div>
+               <div class="category-painters-renaissance">
+                    <p class="text-category">
+                        <span>Ренессанс</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                    <img src="assets/images/mobile/2.jpg" class="categories-img">
+                </div>
+                <div class="category-painters-portrait">
+                    <p class="text-category">
+                        <span>Портрет</span>
+                        <span class="score"></span>
+                    </p>
+                     <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/4.jpg" class="categories-img">
+                </div>
+                <div class="category-painters-painting">
+                    <p class="text-category">
+                        <span>Живопись</span>
+                        <span class="score"></span>
+                    </p>
+                     <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/8.jpg" class="categories-img">
+                </div>
+                <div class="category-painters-landscape">
+                    <p class="text-category">
+                        <span>Ландшафт</span>
+                        <span class="score"></span>
+                    </p>
+                     <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/9.jpg" class="categories-img">
+                </div>
+                <div class="category-painters-avantgarde" class="categories-img">
+                    <p class="text-category">
+                        <span>Авангард</span>
+                        <span class="score"></span>
+                    </p>
+                     <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/18.jpg" class="categories-img">
+                </div>
+                <div class="category-painters-surrealism">
+                    <p class="text-category">
+                        <span>Сюрреализм</span>
+                        <span class="score"></span>
+                    </p>
+                     <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/31.jpg" class="categories-img">
+                </div>
+                <div class="category-painters-romanticism">
+                    <p class="text-category">
+                        <span>Романтизм</span>
+                        <span class="score"></span>
+                    </p>
+                     <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/40.jpg" class="categories-img">
+                </div>
+                <div class="category-painters-expressionism">
+                    <p class="text-category">
+                        <span>Экспрессионизм</span>
+                        <span class="score"></span>
+                    </p>
+                     <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/42.jpg" class="categories-img">
+                </div>
+                <div class="category-painters-religion">
+                    <p class="text-category">
+                        <span>Религия</span>
+                        <span class="score"></span>
+                    </p>
+                     <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/2.jpg" class="categories-img">
+                </div>
+                <div class="category-painters-marine">
+                    <p class="text-category">
+                        <span>Морские</span>
+                        <span class="score"></span>
+                    </p>
+                     <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/14.jpg" class="categories-img">
+                </div>
+            </div>
+        </section>
+        <div class="quiz-block"></div>
+        <div class="results-page-container">
+            <div class="results-page">
+                <img src="assets/svg/back.svg" class="back-btn-pageResults">
+                <h2>Результаты</h2>
+                <span class="name-category"></span>
+                <span class="score-pageResults"></span>
+                <div class="all-images">
+                </div>
+                <div class="footer">
+                    <ul class="footer-list">
+                        <li><a href="https://rs.school/js/"><img src="assets/svg/rs-school-logo.svg"></a></li>
+                        <li><a href="https://github.com/Anastasiya220394">Anastasiya Nitievskaya</a></li>
+                        <li>2021</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <section class="category-images">
+            <div class="images-painters-svg">
+                <img src="assets/svg/logo-categories.svg" class="logo-cat2">
+                <p class="btn-home-images">Домой</p>
+                <img class="btn-settings-categories2" src="assets/svg/settings.svg">
+            </div>
+            <h2>Категории</h2>
+            <div class="list-categories">
+                <div class="category-images-realism">
+                    <p class="text-category">
+                        <span>Реализм</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                    <img src="assets/images/mobile/39.jpg" class="categories-img">
+                </div>
+                <div class="category-images-impressionism">
+                    <p class="text-category">
+                        <span>Импрессионизм</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/58.jpg" class="categories-img">
+                </div>
+                <div class="category-images-renaissance">
+                    <p class="text-category">
+                        <span>Ренессанс</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/45.jpg" class="categories-img">
+                 </div>
+                 <div class="category-images-portrait">
+                    <p class="text-category">
+                        <span>Портрет</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                      <img src="assets/images/mobile/66.jpg" class="categories-img">
+                 </div>
+                 <div class="category-images-painting">
+                    <p class="text-category">
+                        <span>Живопись</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                      <img src="assets/images/mobile/57.jpg" class="categories-img">
+                 </div>
+                 <div class="category-images-landscape">
+                    <p class="text-category">
+                        <span>Ландшафт</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                      <img src="assets/images/mobile/70.jpg" class="categories-img">
+                 </div>
+                 <div class="category-images-avantgarde">
+                    <p class="text-category">
+                        <span>Авангард</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                      <img src="assets/images/mobile/86.jpg" class="categories-img">
+                 </div>
+                 <div class="category-images-surrealism">
+                    <p class="text-category">
+                        <span>Сюрреализм</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                      <img src="assets/images/mobile/81.jpg" class="categories-img">
+                 </div>
+                 <div class="category-images-romanticism">
+                    <p class="text-category">
+                        <span>Романтизм</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                      <img src="assets/images/mobile/85.jpg" class="categories-img">
+                 </div>
+                 <div class="category-images-expressionism">
+                    <p class="text-category">
+                        <span>Экспрессионизм</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                      <img src="assets/images/mobile/96.jpg" class="categories-img">
+                 </div>
+                 <div class="category-images-religion">
+                    <p class="text-category">
+                        <span>Религия</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/68.jpg" class="categories-img">
+                </div>
+                <div class="category-images-marine">
+                    <p class="text-category">
+                        <span>Морские</span>
+                        <span class="score"></span>
+                    </p>
+                    <button class="page-score">Score</button>
+                     <img src="assets/images/mobile/95.jpg" class="categories-img">
+                </div>
+             </div>
+         </section>
+         <div class="quiz2-block"></div>
+         <div class="results-page-container">
+            <div class="results-page2">
+                <img src="assets/svg/back.svg" class="back-btn-pageResults2">
+                <h2>Результаты</h2>
+                <span class="name-category"></span>
+                <span class="score-pageResults2"></span>
+                <div class="all-images2">
+                </div>
+                <div class="footer">
+                    <ul class="footer-list">
+                        <li><a href="https://rs.school/js/"><img src="assets/svg/rs-school-logo.svg"></a></li>
+                        <li><a href="https://github.com/Anastasiya220394">Anastasiya Nitievskaya</a></li>
+                        <li>2021</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
