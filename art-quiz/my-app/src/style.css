@@ -335,6 +335,27 @@ input:checked + .slider:before {
   line-height: 18px;
   letter-spacing: -0.5px;
   margin-left: 25%;
+  position: relative;
+  height: 30px;
+}
+.btn-home-painters:hover {
+  color: rgb(161, 109, 109);
+  font-weight: 700;
+}
+.btn-home-painters:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+}
+.btn-home-painters:hover:after {
+  width: 100%;
 }
 .list-categories {
   display: flex;
@@ -450,11 +471,65 @@ input:checked + .slider:before {
   text-align: center;
   font-family: 'Gilroy';
   cursor: pointer;
+  transition: all 0.4s ease-in;
+  position: relative;
 }
 .answers-painters button:hover {
   background: #FFBCA2;
   color: black;
 }
+
+.answers-painters button:before {
+  content: '';
+  background-color: aliceblue;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: scale(0.001, 0.001);
+}
+.answers-painters button:focus {
+  outline: 0;
+  color: #fff;
+}
+.answers-painters button:focus:before {
+  -webkit-animation: effect_dylan 0.8s ease-out;
+          animation: effect_dylan 0.8s ease-out;
+}
+@-webkit-keyframes effect_dylan {
+  50% {
+    transform: scale(1.5, 1.5);
+    opacity: 0;
+  }
+  99% {
+    transform: scale(0.001, 0.001);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.001, 0.001);
+    opacity: 1;
+  }
+}
+@keyframes effect_dylan {
+  50% {
+    transform: scale(1.5, 1.5);
+    opacity: 0;
+  }
+  99% {
+    transform: scale(0.001, 0.001);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.001, 0.001);
+    opacity: 1;
+  }
+}
+
+
+
 .question-image {
   width: 100%;
   border-radius: 20px;
@@ -741,6 +816,27 @@ input:checked + .slider:before {
   line-height: 18px;
   letter-spacing: -0.5px;
   margin-left: 25%;
+  height: 30px;
+  position: relative;
+}
+.btn-home-images:hover {
+  color: rgb(161, 109, 109);
+  font-weight: 700;
+}
+.btn-home-images:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+}
+.btn-home-images:hover:after {
+  width: 100%;
 }
 .question-block2 {
   padding: 20px 16px 0px 16px;
